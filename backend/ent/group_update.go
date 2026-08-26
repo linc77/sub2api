@@ -4,6 +4,7 @@ package ent
 
 import (
 	"context"
+	"encoding/json/jsontext"
 	"errors"
 	"fmt"
 	"time"
@@ -640,6 +641,18 @@ func (_u *GroupUpdate) ClearVideoPrice1080p() *GroupUpdate {
 	return _u
 }
 
+// SetVideoModelPrices sets the "video_model_prices" field.
+func (_u *GroupUpdate) SetVideoModelPrices(v map[string]map[string]float64) *GroupUpdate {
+	_u.mutation.SetVideoModelPrices(v)
+	return _u
+}
+
+// ClearVideoModelPrices clears the value of the "video_model_prices" field.
+func (_u *GroupUpdate) ClearVideoModelPrices() *GroupUpdate {
+	_u.mutation.ClearVideoModelPrices()
+	return _u
+}
+
 // SetWebSearchPricePerCall sets the "web_search_price_per_call" field.
 func (_u *GroupUpdate) SetWebSearchPricePerCall(v float64) *GroupUpdate {
 	_u.mutation.ResetWebSearchPricePerCall()
@@ -664,6 +677,146 @@ func (_u *GroupUpdate) AddWebSearchPricePerCall(v float64) *GroupUpdate {
 // ClearWebSearchPricePerCall clears the value of the "web_search_price_per_call" field.
 func (_u *GroupUpdate) ClearWebSearchPricePerCall() *GroupUpdate {
 	_u.mutation.ClearWebSearchPricePerCall()
+	return _u
+}
+
+// SetSearchPricePer1k sets the "search_price_per_1k" field.
+func (_u *GroupUpdate) SetSearchPricePer1k(v float64) *GroupUpdate {
+	_u.mutation.ResetSearchPricePer1k()
+	_u.mutation.SetSearchPricePer1k(v)
+	return _u
+}
+
+// SetNillableSearchPricePer1k sets the "search_price_per_1k" field if the given value is not nil.
+func (_u *GroupUpdate) SetNillableSearchPricePer1k(v *float64) *GroupUpdate {
+	if v != nil {
+		_u.SetSearchPricePer1k(*v)
+	}
+	return _u
+}
+
+// AddSearchPricePer1k adds value to the "search_price_per_1k" field.
+func (_u *GroupUpdate) AddSearchPricePer1k(v float64) *GroupUpdate {
+	_u.mutation.AddSearchPricePer1k(v)
+	return _u
+}
+
+// ClearSearchPricePer1k clears the value of the "search_price_per_1k" field.
+func (_u *GroupUpdate) ClearSearchPricePer1k() *GroupUpdate {
+	_u.mutation.ClearSearchPricePer1k()
+	return _u
+}
+
+// SetAudioRealtimePricePerMin sets the "audio_realtime_price_per_min" field.
+func (_u *GroupUpdate) SetAudioRealtimePricePerMin(v float64) *GroupUpdate {
+	_u.mutation.ResetAudioRealtimePricePerMin()
+	_u.mutation.SetAudioRealtimePricePerMin(v)
+	return _u
+}
+
+// SetNillableAudioRealtimePricePerMin sets the "audio_realtime_price_per_min" field if the given value is not nil.
+func (_u *GroupUpdate) SetNillableAudioRealtimePricePerMin(v *float64) *GroupUpdate {
+	if v != nil {
+		_u.SetAudioRealtimePricePerMin(*v)
+	}
+	return _u
+}
+
+// AddAudioRealtimePricePerMin adds value to the "audio_realtime_price_per_min" field.
+func (_u *GroupUpdate) AddAudioRealtimePricePerMin(v float64) *GroupUpdate {
+	_u.mutation.AddAudioRealtimePricePerMin(v)
+	return _u
+}
+
+// ClearAudioRealtimePricePerMin clears the value of the "audio_realtime_price_per_min" field.
+func (_u *GroupUpdate) ClearAudioRealtimePricePerMin() *GroupUpdate {
+	_u.mutation.ClearAudioRealtimePricePerMin()
+	return _u
+}
+
+// SetAudioTtsPricePerMillionChars sets the "audio_tts_price_per_million_chars" field.
+func (_u *GroupUpdate) SetAudioTtsPricePerMillionChars(v float64) *GroupUpdate {
+	_u.mutation.ResetAudioTtsPricePerMillionChars()
+	_u.mutation.SetAudioTtsPricePerMillionChars(v)
+	return _u
+}
+
+// SetNillableAudioTtsPricePerMillionChars sets the "audio_tts_price_per_million_chars" field if the given value is not nil.
+func (_u *GroupUpdate) SetNillableAudioTtsPricePerMillionChars(v *float64) *GroupUpdate {
+	if v != nil {
+		_u.SetAudioTtsPricePerMillionChars(*v)
+	}
+	return _u
+}
+
+// AddAudioTtsPricePerMillionChars adds value to the "audio_tts_price_per_million_chars" field.
+func (_u *GroupUpdate) AddAudioTtsPricePerMillionChars(v float64) *GroupUpdate {
+	_u.mutation.AddAudioTtsPricePerMillionChars(v)
+	return _u
+}
+
+// ClearAudioTtsPricePerMillionChars clears the value of the "audio_tts_price_per_million_chars" field.
+func (_u *GroupUpdate) ClearAudioTtsPricePerMillionChars() *GroupUpdate {
+	_u.mutation.ClearAudioTtsPricePerMillionChars()
+	return _u
+}
+
+// SetAudioSttPricePerHour sets the "audio_stt_price_per_hour" field.
+func (_u *GroupUpdate) SetAudioSttPricePerHour(v float64) *GroupUpdate {
+	_u.mutation.ResetAudioSttPricePerHour()
+	_u.mutation.SetAudioSttPricePerHour(v)
+	return _u
+}
+
+// SetNillableAudioSttPricePerHour sets the "audio_stt_price_per_hour" field if the given value is not nil.
+func (_u *GroupUpdate) SetNillableAudioSttPricePerHour(v *float64) *GroupUpdate {
+	if v != nil {
+		_u.SetAudioSttPricePerHour(*v)
+	}
+	return _u
+}
+
+// AddAudioSttPricePerHour adds value to the "audio_stt_price_per_hour" field.
+func (_u *GroupUpdate) AddAudioSttPricePerHour(v float64) *GroupUpdate {
+	_u.mutation.AddAudioSttPricePerHour(v)
+	return _u
+}
+
+// ClearAudioSttPricePerHour clears the value of the "audio_stt_price_per_hour" field.
+func (_u *GroupUpdate) ClearAudioSttPricePerHour() *GroupUpdate {
+	_u.mutation.ClearAudioSttPricePerHour()
+	return _u
+}
+
+// SetLongContextPricingEnabled sets the "long_context_pricing_enabled" field.
+func (_u *GroupUpdate) SetLongContextPricingEnabled(v bool) *GroupUpdate {
+	_u.mutation.SetLongContextPricingEnabled(v)
+	return _u
+}
+
+// SetNillableLongContextPricingEnabled sets the "long_context_pricing_enabled" field if the given value is not nil.
+func (_u *GroupUpdate) SetNillableLongContextPricingEnabled(v *bool) *GroupUpdate {
+	if v != nil {
+		_u.SetLongContextPricingEnabled(*v)
+	}
+	return _u
+}
+
+// SetModelPricing sets the "model_pricing" field.
+func (_u *GroupUpdate) SetModelPricing(v jsontext.Value) *GroupUpdate {
+	_u.mutation.SetModelPricing(v)
+	return _u
+}
+
+// AppendModelPricing appends value to the "model_pricing" field.
+func (_u *GroupUpdate) AppendModelPricing(v jsontext.Value) *GroupUpdate {
+	_u.mutation.AppendModelPricing(v)
+	return _u
+}
+
+// ClearModelPricing clears the value of the "model_pricing" field.
+func (_u *GroupUpdate) ClearModelPricing() *GroupUpdate {
+	_u.mutation.ClearModelPricing()
 	return _u
 }
 
@@ -907,30 +1060,54 @@ func (_u *GroupUpdate) SetNillableRpmLimit(v *int) *GroupUpdate {
 	return _u
 }
 
+// AddRpmLimit adds value to the "rpm_limit" field.
+func (_u *GroupUpdate) AddRpmLimit(v int) *GroupUpdate {
+	_u.mutation.AddRpmLimit(v)
+	return _u
+}
+
 // SetAllowLive sets the "allow_live" field.
 func (_u *GroupUpdate) SetAllowLive(v bool) *GroupUpdate {
-	_u.mutation.ResetAllowLive()
 	_u.mutation.SetAllowLive(v)
+	return _u
+}
+
+// SetNillableAllowLive sets the "allow_live" field if the given value is not nil.
+func (_u *GroupUpdate) SetNillableAllowLive(v *bool) *GroupUpdate {
+	if v != nil {
+		_u.SetAllowLive(*v)
+	}
 	return _u
 }
 
 // SetMaxReasoningEffort sets the "max_reasoning_effort" field.
 func (_u *GroupUpdate) SetMaxReasoningEffort(v string) *GroupUpdate {
-	_u.mutation.ResetMaxReasoningEffort()
 	_u.mutation.SetMaxReasoningEffort(v)
+	return _u
+}
+
+// SetNillableMaxReasoningEffort sets the "max_reasoning_effort" field if the given value is not nil.
+func (_u *GroupUpdate) SetNillableMaxReasoningEffort(v *string) *GroupUpdate {
+	if v != nil {
+		_u.SetMaxReasoningEffort(*v)
+	}
 	return _u
 }
 
 // SetReasoningEffortMappings sets the "reasoning_effort_mappings" field.
 func (_u *GroupUpdate) SetReasoningEffortMappings(v []domain.ReasoningEffortMapping) *GroupUpdate {
-	_u.mutation.ResetReasoningEffortMappings()
 	_u.mutation.SetReasoningEffortMappings(v)
+	return _u
+}
+
+// AppendReasoningEffortMappings appends value to the "reasoning_effort_mappings" field.
+func (_u *GroupUpdate) AppendReasoningEffortMappings(v []domain.ReasoningEffortMapping) *GroupUpdate {
+	_u.mutation.AppendReasoningEffortMappings(v)
 	return _u
 }
 
 // SetDuplicateOperationID sets the "duplicate_operation_id" field.
 func (_u *GroupUpdate) SetDuplicateOperationID(v string) *GroupUpdate {
-	_u.mutation.ResetDuplicateOperationID()
 	_u.mutation.SetDuplicateOperationID(v)
 	return _u
 }
@@ -949,9 +1126,59 @@ func (_u *GroupUpdate) ClearDuplicateOperationID() *GroupUpdate {
 	return _u
 }
 
-// AddRpmLimit adds value to the "rpm_limit" field.
-func (_u *GroupUpdate) AddRpmLimit(v int) *GroupUpdate {
-	_u.mutation.AddRpmLimit(v)
+// SetProfitControlEnabled sets the "profit_control_enabled" field.
+func (_u *GroupUpdate) SetProfitControlEnabled(v bool) *GroupUpdate {
+	_u.mutation.SetProfitControlEnabled(v)
+	return _u
+}
+
+// SetNillableProfitControlEnabled sets the "profit_control_enabled" field if the given value is not nil.
+func (_u *GroupUpdate) SetNillableProfitControlEnabled(v *bool) *GroupUpdate {
+	if v != nil {
+		_u.SetProfitControlEnabled(*v)
+	}
+	return _u
+}
+
+// SetProfitMinMargin sets the "profit_min_margin" field.
+func (_u *GroupUpdate) SetProfitMinMargin(v float64) *GroupUpdate {
+	_u.mutation.ResetProfitMinMargin()
+	_u.mutation.SetProfitMinMargin(v)
+	return _u
+}
+
+// SetNillableProfitMinMargin sets the "profit_min_margin" field if the given value is not nil.
+func (_u *GroupUpdate) SetNillableProfitMinMargin(v *float64) *GroupUpdate {
+	if v != nil {
+		_u.SetProfitMinMargin(*v)
+	}
+	return _u
+}
+
+// AddProfitMinMargin adds value to the "profit_min_margin" field.
+func (_u *GroupUpdate) AddProfitMinMargin(v float64) *GroupUpdate {
+	_u.mutation.AddProfitMinMargin(v)
+	return _u
+}
+
+// SetProfitSafetyBuffer sets the "profit_safety_buffer" field.
+func (_u *GroupUpdate) SetProfitSafetyBuffer(v float64) *GroupUpdate {
+	_u.mutation.ResetProfitSafetyBuffer()
+	_u.mutation.SetProfitSafetyBuffer(v)
+	return _u
+}
+
+// SetNillableProfitSafetyBuffer sets the "profit_safety_buffer" field if the given value is not nil.
+func (_u *GroupUpdate) SetNillableProfitSafetyBuffer(v *float64) *GroupUpdate {
+	if v != nil {
+		_u.SetProfitSafetyBuffer(*v)
+	}
+	return _u
+}
+
+// AddProfitSafetyBuffer adds value to the "profit_safety_buffer" field.
+func (_u *GroupUpdate) AddProfitSafetyBuffer(v float64) *GroupUpdate {
+	_u.mutation.AddProfitSafetyBuffer(v)
 	return _u
 }
 
@@ -1250,9 +1477,39 @@ func (_u *GroupUpdate) check() error {
 			return &ValidationError{Name: "subscription_type", err: fmt.Errorf(`ent: validator failed for field "Group.subscription_type": %w`, err)}
 		}
 	}
+	if v, ok := _u.mutation.SearchPricePer1k(); ok {
+		if err := group.SearchPricePer1kValidator(v); err != nil {
+			return &ValidationError{Name: "search_price_per_1k", err: fmt.Errorf(`ent: validator failed for field "Group.search_price_per_1k": %w`, err)}
+		}
+	}
+	if v, ok := _u.mutation.AudioRealtimePricePerMin(); ok {
+		if err := group.AudioRealtimePricePerMinValidator(v); err != nil {
+			return &ValidationError{Name: "audio_realtime_price_per_min", err: fmt.Errorf(`ent: validator failed for field "Group.audio_realtime_price_per_min": %w`, err)}
+		}
+	}
+	if v, ok := _u.mutation.AudioTtsPricePerMillionChars(); ok {
+		if err := group.AudioTtsPricePerMillionCharsValidator(v); err != nil {
+			return &ValidationError{Name: "audio_tts_price_per_million_chars", err: fmt.Errorf(`ent: validator failed for field "Group.audio_tts_price_per_million_chars": %w`, err)}
+		}
+	}
+	if v, ok := _u.mutation.AudioSttPricePerHour(); ok {
+		if err := group.AudioSttPricePerHourValidator(v); err != nil {
+			return &ValidationError{Name: "audio_stt_price_per_hour", err: fmt.Errorf(`ent: validator failed for field "Group.audio_stt_price_per_hour": %w`, err)}
+		}
+	}
 	if v, ok := _u.mutation.DefaultMappedModel(); ok {
 		if err := group.DefaultMappedModelValidator(v); err != nil {
 			return &ValidationError{Name: "default_mapped_model", err: fmt.Errorf(`ent: validator failed for field "Group.default_mapped_model": %w`, err)}
+		}
+	}
+	if v, ok := _u.mutation.MaxReasoningEffort(); ok {
+		if err := group.MaxReasoningEffortValidator(v); err != nil {
+			return &ValidationError{Name: "max_reasoning_effort", err: fmt.Errorf(`ent: validator failed for field "Group.max_reasoning_effort": %w`, err)}
+		}
+	}
+	if v, ok := _u.mutation.DuplicateOperationID(); ok {
+		if err := group.DuplicateOperationIDValidator(v); err != nil {
+			return &ValidationError{Name: "duplicate_operation_id", err: fmt.Errorf(`ent: validator failed for field "Group.duplicate_operation_id": %w`, err)}
 		}
 	}
 	return nil
@@ -1444,6 +1701,12 @@ func (_u *GroupUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 	if _u.mutation.VideoPrice1080pCleared() {
 		_spec.ClearField(group.FieldVideoPrice1080p, field.TypeFloat64)
 	}
+	if value, ok := _u.mutation.VideoModelPrices(); ok {
+		_spec.SetField(group.FieldVideoModelPrices, field.TypeJSON, value)
+	}
+	if _u.mutation.VideoModelPricesCleared() {
+		_spec.ClearField(group.FieldVideoModelPrices, field.TypeJSON)
+	}
 	if value, ok := _u.mutation.WebSearchPricePerCall(); ok {
 		_spec.SetField(group.FieldWebSearchPricePerCall, field.TypeFloat64, value)
 	}
@@ -1452,6 +1715,56 @@ func (_u *GroupUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 	}
 	if _u.mutation.WebSearchPricePerCallCleared() {
 		_spec.ClearField(group.FieldWebSearchPricePerCall, field.TypeFloat64)
+	}
+	if value, ok := _u.mutation.SearchPricePer1k(); ok {
+		_spec.SetField(group.FieldSearchPricePer1k, field.TypeFloat64, value)
+	}
+	if value, ok := _u.mutation.AddedSearchPricePer1k(); ok {
+		_spec.AddField(group.FieldSearchPricePer1k, field.TypeFloat64, value)
+	}
+	if _u.mutation.SearchPricePer1kCleared() {
+		_spec.ClearField(group.FieldSearchPricePer1k, field.TypeFloat64)
+	}
+	if value, ok := _u.mutation.AudioRealtimePricePerMin(); ok {
+		_spec.SetField(group.FieldAudioRealtimePricePerMin, field.TypeFloat64, value)
+	}
+	if value, ok := _u.mutation.AddedAudioRealtimePricePerMin(); ok {
+		_spec.AddField(group.FieldAudioRealtimePricePerMin, field.TypeFloat64, value)
+	}
+	if _u.mutation.AudioRealtimePricePerMinCleared() {
+		_spec.ClearField(group.FieldAudioRealtimePricePerMin, field.TypeFloat64)
+	}
+	if value, ok := _u.mutation.AudioTtsPricePerMillionChars(); ok {
+		_spec.SetField(group.FieldAudioTtsPricePerMillionChars, field.TypeFloat64, value)
+	}
+	if value, ok := _u.mutation.AddedAudioTtsPricePerMillionChars(); ok {
+		_spec.AddField(group.FieldAudioTtsPricePerMillionChars, field.TypeFloat64, value)
+	}
+	if _u.mutation.AudioTtsPricePerMillionCharsCleared() {
+		_spec.ClearField(group.FieldAudioTtsPricePerMillionChars, field.TypeFloat64)
+	}
+	if value, ok := _u.mutation.AudioSttPricePerHour(); ok {
+		_spec.SetField(group.FieldAudioSttPricePerHour, field.TypeFloat64, value)
+	}
+	if value, ok := _u.mutation.AddedAudioSttPricePerHour(); ok {
+		_spec.AddField(group.FieldAudioSttPricePerHour, field.TypeFloat64, value)
+	}
+	if _u.mutation.AudioSttPricePerHourCleared() {
+		_spec.ClearField(group.FieldAudioSttPricePerHour, field.TypeFloat64)
+	}
+	if value, ok := _u.mutation.LongContextPricingEnabled(); ok {
+		_spec.SetField(group.FieldLongContextPricingEnabled, field.TypeBool, value)
+	}
+	if value, ok := _u.mutation.ModelPricing(); ok {
+		_spec.SetField(group.FieldModelPricing, field.TypeJSON, value)
+	}
+	if value, ok := _u.mutation.AppendedModelPricing(); ok {
+		_spec.AddModifier(func(u *sql.UpdateBuilder) {
+			sqljson.Append(u, group.FieldModelPricing, value)
+		})
+	}
+	if _u.mutation.ModelPricingCleared() {
+		_spec.ClearField(group.FieldModelPricing, field.TypeJSON)
 	}
 	if value, ok := _u.mutation.ClaudeCodeOnly(); ok {
 		_spec.SetField(group.FieldClaudeCodeOnly, field.TypeBool, value)
@@ -1533,11 +1846,31 @@ func (_u *GroupUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 	if value, ok := _u.mutation.ReasoningEffortMappings(); ok {
 		_spec.SetField(group.FieldReasoningEffortMappings, field.TypeJSON, value)
 	}
+	if value, ok := _u.mutation.AppendedReasoningEffortMappings(); ok {
+		_spec.AddModifier(func(u *sql.UpdateBuilder) {
+			sqljson.Append(u, group.FieldReasoningEffortMappings, value)
+		})
+	}
 	if value, ok := _u.mutation.DuplicateOperationID(); ok {
 		_spec.SetField(group.FieldDuplicateOperationID, field.TypeString, value)
 	}
 	if _u.mutation.DuplicateOperationIDCleared() {
 		_spec.ClearField(group.FieldDuplicateOperationID, field.TypeString)
+	}
+	if value, ok := _u.mutation.ProfitControlEnabled(); ok {
+		_spec.SetField(group.FieldProfitControlEnabled, field.TypeBool, value)
+	}
+	if value, ok := _u.mutation.ProfitMinMargin(); ok {
+		_spec.SetField(group.FieldProfitMinMargin, field.TypeFloat64, value)
+	}
+	if value, ok := _u.mutation.AddedProfitMinMargin(); ok {
+		_spec.AddField(group.FieldProfitMinMargin, field.TypeFloat64, value)
+	}
+	if value, ok := _u.mutation.ProfitSafetyBuffer(); ok {
+		_spec.SetField(group.FieldProfitSafetyBuffer, field.TypeFloat64, value)
+	}
+	if value, ok := _u.mutation.AddedProfitSafetyBuffer(); ok {
+		_spec.AddField(group.FieldProfitSafetyBuffer, field.TypeFloat64, value)
 	}
 	if _u.mutation.APIKeysCleared() {
 		edge := &sqlgraph.EdgeSpec{
@@ -2457,6 +2790,18 @@ func (_u *GroupUpdateOne) ClearVideoPrice1080p() *GroupUpdateOne {
 	return _u
 }
 
+// SetVideoModelPrices sets the "video_model_prices" field.
+func (_u *GroupUpdateOne) SetVideoModelPrices(v map[string]map[string]float64) *GroupUpdateOne {
+	_u.mutation.SetVideoModelPrices(v)
+	return _u
+}
+
+// ClearVideoModelPrices clears the value of the "video_model_prices" field.
+func (_u *GroupUpdateOne) ClearVideoModelPrices() *GroupUpdateOne {
+	_u.mutation.ClearVideoModelPrices()
+	return _u
+}
+
 // SetWebSearchPricePerCall sets the "web_search_price_per_call" field.
 func (_u *GroupUpdateOne) SetWebSearchPricePerCall(v float64) *GroupUpdateOne {
 	_u.mutation.ResetWebSearchPricePerCall()
@@ -2481,6 +2826,146 @@ func (_u *GroupUpdateOne) AddWebSearchPricePerCall(v float64) *GroupUpdateOne {
 // ClearWebSearchPricePerCall clears the value of the "web_search_price_per_call" field.
 func (_u *GroupUpdateOne) ClearWebSearchPricePerCall() *GroupUpdateOne {
 	_u.mutation.ClearWebSearchPricePerCall()
+	return _u
+}
+
+// SetSearchPricePer1k sets the "search_price_per_1k" field.
+func (_u *GroupUpdateOne) SetSearchPricePer1k(v float64) *GroupUpdateOne {
+	_u.mutation.ResetSearchPricePer1k()
+	_u.mutation.SetSearchPricePer1k(v)
+	return _u
+}
+
+// SetNillableSearchPricePer1k sets the "search_price_per_1k" field if the given value is not nil.
+func (_u *GroupUpdateOne) SetNillableSearchPricePer1k(v *float64) *GroupUpdateOne {
+	if v != nil {
+		_u.SetSearchPricePer1k(*v)
+	}
+	return _u
+}
+
+// AddSearchPricePer1k adds value to the "search_price_per_1k" field.
+func (_u *GroupUpdateOne) AddSearchPricePer1k(v float64) *GroupUpdateOne {
+	_u.mutation.AddSearchPricePer1k(v)
+	return _u
+}
+
+// ClearSearchPricePer1k clears the value of the "search_price_per_1k" field.
+func (_u *GroupUpdateOne) ClearSearchPricePer1k() *GroupUpdateOne {
+	_u.mutation.ClearSearchPricePer1k()
+	return _u
+}
+
+// SetAudioRealtimePricePerMin sets the "audio_realtime_price_per_min" field.
+func (_u *GroupUpdateOne) SetAudioRealtimePricePerMin(v float64) *GroupUpdateOne {
+	_u.mutation.ResetAudioRealtimePricePerMin()
+	_u.mutation.SetAudioRealtimePricePerMin(v)
+	return _u
+}
+
+// SetNillableAudioRealtimePricePerMin sets the "audio_realtime_price_per_min" field if the given value is not nil.
+func (_u *GroupUpdateOne) SetNillableAudioRealtimePricePerMin(v *float64) *GroupUpdateOne {
+	if v != nil {
+		_u.SetAudioRealtimePricePerMin(*v)
+	}
+	return _u
+}
+
+// AddAudioRealtimePricePerMin adds value to the "audio_realtime_price_per_min" field.
+func (_u *GroupUpdateOne) AddAudioRealtimePricePerMin(v float64) *GroupUpdateOne {
+	_u.mutation.AddAudioRealtimePricePerMin(v)
+	return _u
+}
+
+// ClearAudioRealtimePricePerMin clears the value of the "audio_realtime_price_per_min" field.
+func (_u *GroupUpdateOne) ClearAudioRealtimePricePerMin() *GroupUpdateOne {
+	_u.mutation.ClearAudioRealtimePricePerMin()
+	return _u
+}
+
+// SetAudioTtsPricePerMillionChars sets the "audio_tts_price_per_million_chars" field.
+func (_u *GroupUpdateOne) SetAudioTtsPricePerMillionChars(v float64) *GroupUpdateOne {
+	_u.mutation.ResetAudioTtsPricePerMillionChars()
+	_u.mutation.SetAudioTtsPricePerMillionChars(v)
+	return _u
+}
+
+// SetNillableAudioTtsPricePerMillionChars sets the "audio_tts_price_per_million_chars" field if the given value is not nil.
+func (_u *GroupUpdateOne) SetNillableAudioTtsPricePerMillionChars(v *float64) *GroupUpdateOne {
+	if v != nil {
+		_u.SetAudioTtsPricePerMillionChars(*v)
+	}
+	return _u
+}
+
+// AddAudioTtsPricePerMillionChars adds value to the "audio_tts_price_per_million_chars" field.
+func (_u *GroupUpdateOne) AddAudioTtsPricePerMillionChars(v float64) *GroupUpdateOne {
+	_u.mutation.AddAudioTtsPricePerMillionChars(v)
+	return _u
+}
+
+// ClearAudioTtsPricePerMillionChars clears the value of the "audio_tts_price_per_million_chars" field.
+func (_u *GroupUpdateOne) ClearAudioTtsPricePerMillionChars() *GroupUpdateOne {
+	_u.mutation.ClearAudioTtsPricePerMillionChars()
+	return _u
+}
+
+// SetAudioSttPricePerHour sets the "audio_stt_price_per_hour" field.
+func (_u *GroupUpdateOne) SetAudioSttPricePerHour(v float64) *GroupUpdateOne {
+	_u.mutation.ResetAudioSttPricePerHour()
+	_u.mutation.SetAudioSttPricePerHour(v)
+	return _u
+}
+
+// SetNillableAudioSttPricePerHour sets the "audio_stt_price_per_hour" field if the given value is not nil.
+func (_u *GroupUpdateOne) SetNillableAudioSttPricePerHour(v *float64) *GroupUpdateOne {
+	if v != nil {
+		_u.SetAudioSttPricePerHour(*v)
+	}
+	return _u
+}
+
+// AddAudioSttPricePerHour adds value to the "audio_stt_price_per_hour" field.
+func (_u *GroupUpdateOne) AddAudioSttPricePerHour(v float64) *GroupUpdateOne {
+	_u.mutation.AddAudioSttPricePerHour(v)
+	return _u
+}
+
+// ClearAudioSttPricePerHour clears the value of the "audio_stt_price_per_hour" field.
+func (_u *GroupUpdateOne) ClearAudioSttPricePerHour() *GroupUpdateOne {
+	_u.mutation.ClearAudioSttPricePerHour()
+	return _u
+}
+
+// SetLongContextPricingEnabled sets the "long_context_pricing_enabled" field.
+func (_u *GroupUpdateOne) SetLongContextPricingEnabled(v bool) *GroupUpdateOne {
+	_u.mutation.SetLongContextPricingEnabled(v)
+	return _u
+}
+
+// SetNillableLongContextPricingEnabled sets the "long_context_pricing_enabled" field if the given value is not nil.
+func (_u *GroupUpdateOne) SetNillableLongContextPricingEnabled(v *bool) *GroupUpdateOne {
+	if v != nil {
+		_u.SetLongContextPricingEnabled(*v)
+	}
+	return _u
+}
+
+// SetModelPricing sets the "model_pricing" field.
+func (_u *GroupUpdateOne) SetModelPricing(v jsontext.Value) *GroupUpdateOne {
+	_u.mutation.SetModelPricing(v)
+	return _u
+}
+
+// AppendModelPricing appends value to the "model_pricing" field.
+func (_u *GroupUpdateOne) AppendModelPricing(v jsontext.Value) *GroupUpdateOne {
+	_u.mutation.AppendModelPricing(v)
+	return _u
+}
+
+// ClearModelPricing clears the value of the "model_pricing" field.
+func (_u *GroupUpdateOne) ClearModelPricing() *GroupUpdateOne {
+	_u.mutation.ClearModelPricing()
 	return _u
 }
 
@@ -2732,28 +3217,46 @@ func (_u *GroupUpdateOne) AddRpmLimit(v int) *GroupUpdateOne {
 
 // SetAllowLive sets the "allow_live" field.
 func (_u *GroupUpdateOne) SetAllowLive(v bool) *GroupUpdateOne {
-	_u.mutation.ResetAllowLive()
 	_u.mutation.SetAllowLive(v)
+	return _u
+}
+
+// SetNillableAllowLive sets the "allow_live" field if the given value is not nil.
+func (_u *GroupUpdateOne) SetNillableAllowLive(v *bool) *GroupUpdateOne {
+	if v != nil {
+		_u.SetAllowLive(*v)
+	}
 	return _u
 }
 
 // SetMaxReasoningEffort sets the "max_reasoning_effort" field.
 func (_u *GroupUpdateOne) SetMaxReasoningEffort(v string) *GroupUpdateOne {
-	_u.mutation.ResetMaxReasoningEffort()
 	_u.mutation.SetMaxReasoningEffort(v)
+	return _u
+}
+
+// SetNillableMaxReasoningEffort sets the "max_reasoning_effort" field if the given value is not nil.
+func (_u *GroupUpdateOne) SetNillableMaxReasoningEffort(v *string) *GroupUpdateOne {
+	if v != nil {
+		_u.SetMaxReasoningEffort(*v)
+	}
 	return _u
 }
 
 // SetReasoningEffortMappings sets the "reasoning_effort_mappings" field.
 func (_u *GroupUpdateOne) SetReasoningEffortMappings(v []domain.ReasoningEffortMapping) *GroupUpdateOne {
-	_u.mutation.ResetReasoningEffortMappings()
 	_u.mutation.SetReasoningEffortMappings(v)
+	return _u
+}
+
+// AppendReasoningEffortMappings appends value to the "reasoning_effort_mappings" field.
+func (_u *GroupUpdateOne) AppendReasoningEffortMappings(v []domain.ReasoningEffortMapping) *GroupUpdateOne {
+	_u.mutation.AppendReasoningEffortMappings(v)
 	return _u
 }
 
 // SetDuplicateOperationID sets the "duplicate_operation_id" field.
 func (_u *GroupUpdateOne) SetDuplicateOperationID(v string) *GroupUpdateOne {
-	_u.mutation.ResetDuplicateOperationID()
 	_u.mutation.SetDuplicateOperationID(v)
 	return _u
 }
@@ -2769,6 +3272,62 @@ func (_u *GroupUpdateOne) SetNillableDuplicateOperationID(v *string) *GroupUpdat
 // ClearDuplicateOperationID clears the value of the "duplicate_operation_id" field.
 func (_u *GroupUpdateOne) ClearDuplicateOperationID() *GroupUpdateOne {
 	_u.mutation.ClearDuplicateOperationID()
+	return _u
+}
+
+// SetProfitControlEnabled sets the "profit_control_enabled" field.
+func (_u *GroupUpdateOne) SetProfitControlEnabled(v bool) *GroupUpdateOne {
+	_u.mutation.SetProfitControlEnabled(v)
+	return _u
+}
+
+// SetNillableProfitControlEnabled sets the "profit_control_enabled" field if the given value is not nil.
+func (_u *GroupUpdateOne) SetNillableProfitControlEnabled(v *bool) *GroupUpdateOne {
+	if v != nil {
+		_u.SetProfitControlEnabled(*v)
+	}
+	return _u
+}
+
+// SetProfitMinMargin sets the "profit_min_margin" field.
+func (_u *GroupUpdateOne) SetProfitMinMargin(v float64) *GroupUpdateOne {
+	_u.mutation.ResetProfitMinMargin()
+	_u.mutation.SetProfitMinMargin(v)
+	return _u
+}
+
+// SetNillableProfitMinMargin sets the "profit_min_margin" field if the given value is not nil.
+func (_u *GroupUpdateOne) SetNillableProfitMinMargin(v *float64) *GroupUpdateOne {
+	if v != nil {
+		_u.SetProfitMinMargin(*v)
+	}
+	return _u
+}
+
+// AddProfitMinMargin adds value to the "profit_min_margin" field.
+func (_u *GroupUpdateOne) AddProfitMinMargin(v float64) *GroupUpdateOne {
+	_u.mutation.AddProfitMinMargin(v)
+	return _u
+}
+
+// SetProfitSafetyBuffer sets the "profit_safety_buffer" field.
+func (_u *GroupUpdateOne) SetProfitSafetyBuffer(v float64) *GroupUpdateOne {
+	_u.mutation.ResetProfitSafetyBuffer()
+	_u.mutation.SetProfitSafetyBuffer(v)
+	return _u
+}
+
+// SetNillableProfitSafetyBuffer sets the "profit_safety_buffer" field if the given value is not nil.
+func (_u *GroupUpdateOne) SetNillableProfitSafetyBuffer(v *float64) *GroupUpdateOne {
+	if v != nil {
+		_u.SetProfitSafetyBuffer(*v)
+	}
+	return _u
+}
+
+// AddProfitSafetyBuffer adds value to the "profit_safety_buffer" field.
+func (_u *GroupUpdateOne) AddProfitSafetyBuffer(v float64) *GroupUpdateOne {
+	_u.mutation.AddProfitSafetyBuffer(v)
 	return _u
 }
 
@@ -3080,9 +3639,39 @@ func (_u *GroupUpdateOne) check() error {
 			return &ValidationError{Name: "subscription_type", err: fmt.Errorf(`ent: validator failed for field "Group.subscription_type": %w`, err)}
 		}
 	}
+	if v, ok := _u.mutation.SearchPricePer1k(); ok {
+		if err := group.SearchPricePer1kValidator(v); err != nil {
+			return &ValidationError{Name: "search_price_per_1k", err: fmt.Errorf(`ent: validator failed for field "Group.search_price_per_1k": %w`, err)}
+		}
+	}
+	if v, ok := _u.mutation.AudioRealtimePricePerMin(); ok {
+		if err := group.AudioRealtimePricePerMinValidator(v); err != nil {
+			return &ValidationError{Name: "audio_realtime_price_per_min", err: fmt.Errorf(`ent: validator failed for field "Group.audio_realtime_price_per_min": %w`, err)}
+		}
+	}
+	if v, ok := _u.mutation.AudioTtsPricePerMillionChars(); ok {
+		if err := group.AudioTtsPricePerMillionCharsValidator(v); err != nil {
+			return &ValidationError{Name: "audio_tts_price_per_million_chars", err: fmt.Errorf(`ent: validator failed for field "Group.audio_tts_price_per_million_chars": %w`, err)}
+		}
+	}
+	if v, ok := _u.mutation.AudioSttPricePerHour(); ok {
+		if err := group.AudioSttPricePerHourValidator(v); err != nil {
+			return &ValidationError{Name: "audio_stt_price_per_hour", err: fmt.Errorf(`ent: validator failed for field "Group.audio_stt_price_per_hour": %w`, err)}
+		}
+	}
 	if v, ok := _u.mutation.DefaultMappedModel(); ok {
 		if err := group.DefaultMappedModelValidator(v); err != nil {
 			return &ValidationError{Name: "default_mapped_model", err: fmt.Errorf(`ent: validator failed for field "Group.default_mapped_model": %w`, err)}
+		}
+	}
+	if v, ok := _u.mutation.MaxReasoningEffort(); ok {
+		if err := group.MaxReasoningEffortValidator(v); err != nil {
+			return &ValidationError{Name: "max_reasoning_effort", err: fmt.Errorf(`ent: validator failed for field "Group.max_reasoning_effort": %w`, err)}
+		}
+	}
+	if v, ok := _u.mutation.DuplicateOperationID(); ok {
+		if err := group.DuplicateOperationIDValidator(v); err != nil {
+			return &ValidationError{Name: "duplicate_operation_id", err: fmt.Errorf(`ent: validator failed for field "Group.duplicate_operation_id": %w`, err)}
 		}
 	}
 	return nil
@@ -3291,6 +3880,12 @@ func (_u *GroupUpdateOne) sqlSave(ctx context.Context) (_node *Group, err error)
 	if _u.mutation.VideoPrice1080pCleared() {
 		_spec.ClearField(group.FieldVideoPrice1080p, field.TypeFloat64)
 	}
+	if value, ok := _u.mutation.VideoModelPrices(); ok {
+		_spec.SetField(group.FieldVideoModelPrices, field.TypeJSON, value)
+	}
+	if _u.mutation.VideoModelPricesCleared() {
+		_spec.ClearField(group.FieldVideoModelPrices, field.TypeJSON)
+	}
 	if value, ok := _u.mutation.WebSearchPricePerCall(); ok {
 		_spec.SetField(group.FieldWebSearchPricePerCall, field.TypeFloat64, value)
 	}
@@ -3299,6 +3894,56 @@ func (_u *GroupUpdateOne) sqlSave(ctx context.Context) (_node *Group, err error)
 	}
 	if _u.mutation.WebSearchPricePerCallCleared() {
 		_spec.ClearField(group.FieldWebSearchPricePerCall, field.TypeFloat64)
+	}
+	if value, ok := _u.mutation.SearchPricePer1k(); ok {
+		_spec.SetField(group.FieldSearchPricePer1k, field.TypeFloat64, value)
+	}
+	if value, ok := _u.mutation.AddedSearchPricePer1k(); ok {
+		_spec.AddField(group.FieldSearchPricePer1k, field.TypeFloat64, value)
+	}
+	if _u.mutation.SearchPricePer1kCleared() {
+		_spec.ClearField(group.FieldSearchPricePer1k, field.TypeFloat64)
+	}
+	if value, ok := _u.mutation.AudioRealtimePricePerMin(); ok {
+		_spec.SetField(group.FieldAudioRealtimePricePerMin, field.TypeFloat64, value)
+	}
+	if value, ok := _u.mutation.AddedAudioRealtimePricePerMin(); ok {
+		_spec.AddField(group.FieldAudioRealtimePricePerMin, field.TypeFloat64, value)
+	}
+	if _u.mutation.AudioRealtimePricePerMinCleared() {
+		_spec.ClearField(group.FieldAudioRealtimePricePerMin, field.TypeFloat64)
+	}
+	if value, ok := _u.mutation.AudioTtsPricePerMillionChars(); ok {
+		_spec.SetField(group.FieldAudioTtsPricePerMillionChars, field.TypeFloat64, value)
+	}
+	if value, ok := _u.mutation.AddedAudioTtsPricePerMillionChars(); ok {
+		_spec.AddField(group.FieldAudioTtsPricePerMillionChars, field.TypeFloat64, value)
+	}
+	if _u.mutation.AudioTtsPricePerMillionCharsCleared() {
+		_spec.ClearField(group.FieldAudioTtsPricePerMillionChars, field.TypeFloat64)
+	}
+	if value, ok := _u.mutation.AudioSttPricePerHour(); ok {
+		_spec.SetField(group.FieldAudioSttPricePerHour, field.TypeFloat64, value)
+	}
+	if value, ok := _u.mutation.AddedAudioSttPricePerHour(); ok {
+		_spec.AddField(group.FieldAudioSttPricePerHour, field.TypeFloat64, value)
+	}
+	if _u.mutation.AudioSttPricePerHourCleared() {
+		_spec.ClearField(group.FieldAudioSttPricePerHour, field.TypeFloat64)
+	}
+	if value, ok := _u.mutation.LongContextPricingEnabled(); ok {
+		_spec.SetField(group.FieldLongContextPricingEnabled, field.TypeBool, value)
+	}
+	if value, ok := _u.mutation.ModelPricing(); ok {
+		_spec.SetField(group.FieldModelPricing, field.TypeJSON, value)
+	}
+	if value, ok := _u.mutation.AppendedModelPricing(); ok {
+		_spec.AddModifier(func(u *sql.UpdateBuilder) {
+			sqljson.Append(u, group.FieldModelPricing, value)
+		})
+	}
+	if _u.mutation.ModelPricingCleared() {
+		_spec.ClearField(group.FieldModelPricing, field.TypeJSON)
 	}
 	if value, ok := _u.mutation.ClaudeCodeOnly(); ok {
 		_spec.SetField(group.FieldClaudeCodeOnly, field.TypeBool, value)
@@ -3380,11 +4025,31 @@ func (_u *GroupUpdateOne) sqlSave(ctx context.Context) (_node *Group, err error)
 	if value, ok := _u.mutation.ReasoningEffortMappings(); ok {
 		_spec.SetField(group.FieldReasoningEffortMappings, field.TypeJSON, value)
 	}
+	if value, ok := _u.mutation.AppendedReasoningEffortMappings(); ok {
+		_spec.AddModifier(func(u *sql.UpdateBuilder) {
+			sqljson.Append(u, group.FieldReasoningEffortMappings, value)
+		})
+	}
 	if value, ok := _u.mutation.DuplicateOperationID(); ok {
 		_spec.SetField(group.FieldDuplicateOperationID, field.TypeString, value)
 	}
 	if _u.mutation.DuplicateOperationIDCleared() {
 		_spec.ClearField(group.FieldDuplicateOperationID, field.TypeString)
+	}
+	if value, ok := _u.mutation.ProfitControlEnabled(); ok {
+		_spec.SetField(group.FieldProfitControlEnabled, field.TypeBool, value)
+	}
+	if value, ok := _u.mutation.ProfitMinMargin(); ok {
+		_spec.SetField(group.FieldProfitMinMargin, field.TypeFloat64, value)
+	}
+	if value, ok := _u.mutation.AddedProfitMinMargin(); ok {
+		_spec.AddField(group.FieldProfitMinMargin, field.TypeFloat64, value)
+	}
+	if value, ok := _u.mutation.ProfitSafetyBuffer(); ok {
+		_spec.SetField(group.FieldProfitSafetyBuffer, field.TypeFloat64, value)
+	}
+	if value, ok := _u.mutation.AddedProfitSafetyBuffer(); ok {
+		_spec.AddField(group.FieldProfitSafetyBuffer, field.TypeFloat64, value)
 	}
 	if _u.mutation.APIKeysCleared() {
 		edge := &sqlgraph.EdgeSpec{

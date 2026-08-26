@@ -5,6 +5,9 @@ docs/claude-relay-service/
 !.codex/skills/sub2api-sync/
 !.codex/skills/sub2api-sync/**
 
+# 本地杂项文档、测试数据和外部项目副本
+/docs-local/
+
 # ===================
 # Go 后端
 # ===================
@@ -157,13 +160,25 @@ docs/*
 !docs/PAYMENT_CN.md
 !docs/ADMIN_PAYMENT_INTEGRATION_API.md
 !docs/ASYNC_IMAGE_TASKS.md
+!docs/BATCH_IMAGE_MVP.md
+!docs/COMPOSITE_GROUPS.md
+!docs/PLUGIN_DEVELOPMENT.md
+!docs/channel-monitor-v2-safe-defaults.md
 !docs/legal/
 !docs/legal/*.md
+!docs/screenshots/
+docs/screenshots/*
+!docs/screenshots/mobile-account-actions-menu.png
 .serena/
 frontend/coverage/
 aicodex
 output/
-
 # macOS resource fork files
 ._*
 .DS_Store
+.codegraph/
+
+# Vitest / Vite cache at repo root
+.vite/
+# 本地闭源插件开发目录及构建产物不进入 Sub2API 仓库
+/plugins/

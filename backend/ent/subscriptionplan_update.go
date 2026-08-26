@@ -30,7 +30,6 @@ func (_u *SubscriptionPlanUpdate) Where(ps ...predicate.SubscriptionPlan) *Subsc
 
 // SetGroupID sets the "group_id" field.
 func (_u *SubscriptionPlanUpdate) SetGroupID(v int64) *SubscriptionPlanUpdate {
-	_u.mutation.ResetGroupID()
 	_u.mutation.SetGroupID(v)
 	return _u
 }
@@ -40,12 +39,6 @@ func (_u *SubscriptionPlanUpdate) SetNillableGroupID(v *int64) *SubscriptionPlan
 	if v != nil {
 		_u.SetGroupID(*v)
 	}
-	return _u
-}
-
-// AddGroupID adds value to the "group_id" field.
-func (_u *SubscriptionPlanUpdate) AddGroupID(v int64) *SubscriptionPlanUpdate {
-	_u.mutation.AddGroupID(v)
 	return _u
 }
 
@@ -92,9 +85,15 @@ func (_u *SubscriptionPlanUpdate) SetNillablePrice(v *float64) *SubscriptionPlan
 	return _u
 }
 
-// AddPrice adds value to the "price" field.
-func (_u *SubscriptionPlanUpdate) AddPrice(v float64) *SubscriptionPlanUpdate {
-	_u.mutation.AddPrice(v)
+// AddPrice adds f to the "price" field.
+func (_u *SubscriptionPlanUpdate) AddPrice(f float64) *SubscriptionPlanUpdate {
+	_u.mutation.AddPrice(f)
+	return _u
+}
+
+// ClearOriginalPrice clears the value of the "original_price" field.
+func (_u *SubscriptionPlanUpdate) ClearOriginalPrice() *SubscriptionPlanUpdate {
+	_u.mutation.ClearOriginalPrice()
 	return _u
 }
 
@@ -113,15 +112,23 @@ func (_u *SubscriptionPlanUpdate) SetNillableOriginalPrice(v *float64) *Subscrip
 	return _u
 }
 
-// AddOriginalPrice adds value to the "original_price" field.
-func (_u *SubscriptionPlanUpdate) AddOriginalPrice(v float64) *SubscriptionPlanUpdate {
-	_u.mutation.AddOriginalPrice(v)
+// AddOriginalPrice adds f to the "original_price" field.
+func (_u *SubscriptionPlanUpdate) AddOriginalPrice(f float64) *SubscriptionPlanUpdate {
+	_u.mutation.AddOriginalPrice(f)
 	return _u
 }
 
-// ClearOriginalPrice clears the value of the "original_price" field.
-func (_u *SubscriptionPlanUpdate) ClearOriginalPrice() *SubscriptionPlanUpdate {
-	_u.mutation.ClearOriginalPrice()
+// SetCurrency sets the "currency" field.
+func (_u *SubscriptionPlanUpdate) SetCurrency(v string) *SubscriptionPlanUpdate {
+	_u.mutation.SetCurrency(v)
+	return _u
+}
+
+// SetNillableCurrency sets the "currency" field if the given value is not nil.
+func (_u *SubscriptionPlanUpdate) SetNillableCurrency(v *string) *SubscriptionPlanUpdate {
+	if v != nil {
+		_u.SetCurrency(*v)
+	}
 	return _u
 }
 
@@ -140,9 +147,9 @@ func (_u *SubscriptionPlanUpdate) SetNillableValidityDays(v *int) *SubscriptionP
 	return _u
 }
 
-// AddValidityDays adds value to the "validity_days" field.
-func (_u *SubscriptionPlanUpdate) AddValidityDays(v int) *SubscriptionPlanUpdate {
-	_u.mutation.AddValidityDays(v)
+// AddValidityDays adds f to the "validity_days" field.
+func (_u *SubscriptionPlanUpdate) AddValidityDays(f int) *SubscriptionPlanUpdate {
+	_u.mutation.AddValidityDays(f)
 	return _u
 }
 
@@ -217,9 +224,23 @@ func (_u *SubscriptionPlanUpdate) SetNillableSortOrder(v *int) *SubscriptionPlan
 	return _u
 }
 
-// AddSortOrder adds value to the "sort_order" field.
-func (_u *SubscriptionPlanUpdate) AddSortOrder(v int) *SubscriptionPlanUpdate {
-	_u.mutation.AddSortOrder(v)
+// AddSortOrder adds f to the "sort_order" field.
+func (_u *SubscriptionPlanUpdate) AddSortOrder(f int) *SubscriptionPlanUpdate {
+	_u.mutation.AddSortOrder(f)
+	return _u
+}
+
+// SetCreatedAt sets the "created_at" field.
+func (_u *SubscriptionPlanUpdate) SetCreatedAt(v time.Time) *SubscriptionPlanUpdate {
+	_u.mutation.SetCreatedAt(v)
+	return _u
+}
+
+// SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
+func (_u *SubscriptionPlanUpdate) SetNillableCreatedAt(v *time.Time) *SubscriptionPlanUpdate {
+	if v != nil {
+		_u.SetCreatedAt(*v)
+	}
 	return _u
 }
 
@@ -270,30 +291,7 @@ func (_u *SubscriptionPlanUpdate) defaults() {
 	}
 }
 
-// check runs all checks and user-defined validators on the builder.
-func (_u *SubscriptionPlanUpdate) check() error {
-	if v, ok := _u.mutation.Name(); ok {
-		if err := subscriptionplan.NameValidator(v); err != nil {
-			return &ValidationError{Name: "name", err: fmt.Errorf(`ent: validator failed for field "SubscriptionPlan.name": %w`, err)}
-		}
-	}
-	if v, ok := _u.mutation.ValidityUnit(); ok {
-		if err := subscriptionplan.ValidityUnitValidator(v); err != nil {
-			return &ValidationError{Name: "validity_unit", err: fmt.Errorf(`ent: validator failed for field "SubscriptionPlan.validity_unit": %w`, err)}
-		}
-	}
-	if v, ok := _u.mutation.ProductName(); ok {
-		if err := subscriptionplan.ProductNameValidator(v); err != nil {
-			return &ValidationError{Name: "product_name", err: fmt.Errorf(`ent: validator failed for field "SubscriptionPlan.product_name": %w`, err)}
-		}
-	}
-	return nil
-}
-
-func (_u *SubscriptionPlanUpdate) sqlSave(ctx context.Context) (_node int, err error) {
-	if err := _u.check(); err != nil {
-		return _node, err
-	}
+func (_u *SubscriptionPlanUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	_spec := sqlgraph.NewUpdateSpec(subscriptionplan.Table, subscriptionplan.Columns, sqlgraph.NewFieldSpec(subscriptionplan.FieldID, field.TypeInt64))
 	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
@@ -304,9 +302,6 @@ func (_u *SubscriptionPlanUpdate) sqlSave(ctx context.Context) (_node int, err e
 	}
 	if value, ok := _u.mutation.GroupID(); ok {
 		_spec.SetField(subscriptionplan.FieldGroupID, field.TypeInt64, value)
-	}
-	if value, ok := _u.mutation.AddedGroupID(); ok {
-		_spec.AddField(subscriptionplan.FieldGroupID, field.TypeInt64, value)
 	}
 	if value, ok := _u.mutation.Name(); ok {
 		_spec.SetField(subscriptionplan.FieldName, field.TypeString, value)
@@ -328,6 +323,9 @@ func (_u *SubscriptionPlanUpdate) sqlSave(ctx context.Context) (_node int, err e
 	}
 	if _u.mutation.OriginalPriceCleared() {
 		_spec.ClearField(subscriptionplan.FieldOriginalPrice, field.TypeFloat64)
+	}
+	if value, ok := _u.mutation.Currency(); ok {
+		_spec.SetField(subscriptionplan.FieldCurrency, field.TypeString, value)
 	}
 	if value, ok := _u.mutation.ValidityDays(); ok {
 		_spec.SetField(subscriptionplan.FieldValidityDays, field.TypeInt, value)
@@ -353,10 +351,13 @@ func (_u *SubscriptionPlanUpdate) sqlSave(ctx context.Context) (_node int, err e
 	if value, ok := _u.mutation.AddedSortOrder(); ok {
 		_spec.AddField(subscriptionplan.FieldSortOrder, field.TypeInt, value)
 	}
+	if value, ok := _u.mutation.CreatedAt(); ok {
+		_spec.SetField(subscriptionplan.FieldCreatedAt, field.TypeTime, value)
+	}
 	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(subscriptionplan.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
+	if n, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{subscriptionplan.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -365,7 +366,7 @@ func (_u *SubscriptionPlanUpdate) sqlSave(ctx context.Context) (_node int, err e
 		return 0, err
 	}
 	_u.mutation.done = true
-	return _node, nil
+	return n, nil
 }
 
 // SubscriptionPlanUpdateOne is the builder for updating a single SubscriptionPlan entity.
@@ -378,7 +379,6 @@ type SubscriptionPlanUpdateOne struct {
 
 // SetGroupID sets the "group_id" field.
 func (_u *SubscriptionPlanUpdateOne) SetGroupID(v int64) *SubscriptionPlanUpdateOne {
-	_u.mutation.ResetGroupID()
 	_u.mutation.SetGroupID(v)
 	return _u
 }
@@ -388,12 +388,6 @@ func (_u *SubscriptionPlanUpdateOne) SetNillableGroupID(v *int64) *SubscriptionP
 	if v != nil {
 		_u.SetGroupID(*v)
 	}
-	return _u
-}
-
-// AddGroupID adds value to the "group_id" field.
-func (_u *SubscriptionPlanUpdateOne) AddGroupID(v int64) *SubscriptionPlanUpdateOne {
-	_u.mutation.AddGroupID(v)
 	return _u
 }
 
@@ -440,9 +434,15 @@ func (_u *SubscriptionPlanUpdateOne) SetNillablePrice(v *float64) *SubscriptionP
 	return _u
 }
 
-// AddPrice adds value to the "price" field.
-func (_u *SubscriptionPlanUpdateOne) AddPrice(v float64) *SubscriptionPlanUpdateOne {
-	_u.mutation.AddPrice(v)
+// AddPrice adds f to the "price" field.
+func (_u *SubscriptionPlanUpdateOne) AddPrice(f float64) *SubscriptionPlanUpdateOne {
+	_u.mutation.AddPrice(f)
+	return _u
+}
+
+// ClearOriginalPrice clears the value of the "original_price" field.
+func (_u *SubscriptionPlanUpdateOne) ClearOriginalPrice() *SubscriptionPlanUpdateOne {
+	_u.mutation.ClearOriginalPrice()
 	return _u
 }
 
@@ -461,15 +461,23 @@ func (_u *SubscriptionPlanUpdateOne) SetNillableOriginalPrice(v *float64) *Subsc
 	return _u
 }
 
-// AddOriginalPrice adds value to the "original_price" field.
-func (_u *SubscriptionPlanUpdateOne) AddOriginalPrice(v float64) *SubscriptionPlanUpdateOne {
-	_u.mutation.AddOriginalPrice(v)
+// AddOriginalPrice adds f to the "original_price" field.
+func (_u *SubscriptionPlanUpdateOne) AddOriginalPrice(f float64) *SubscriptionPlanUpdateOne {
+	_u.mutation.AddOriginalPrice(f)
 	return _u
 }
 
-// ClearOriginalPrice clears the value of the "original_price" field.
-func (_u *SubscriptionPlanUpdateOne) ClearOriginalPrice() *SubscriptionPlanUpdateOne {
-	_u.mutation.ClearOriginalPrice()
+// SetCurrency sets the "currency" field.
+func (_u *SubscriptionPlanUpdateOne) SetCurrency(v string) *SubscriptionPlanUpdateOne {
+	_u.mutation.SetCurrency(v)
+	return _u
+}
+
+// SetNillableCurrency sets the "currency" field if the given value is not nil.
+func (_u *SubscriptionPlanUpdateOne) SetNillableCurrency(v *string) *SubscriptionPlanUpdateOne {
+	if v != nil {
+		_u.SetCurrency(*v)
+	}
 	return _u
 }
 
@@ -488,9 +496,9 @@ func (_u *SubscriptionPlanUpdateOne) SetNillableValidityDays(v *int) *Subscripti
 	return _u
 }
 
-// AddValidityDays adds value to the "validity_days" field.
-func (_u *SubscriptionPlanUpdateOne) AddValidityDays(v int) *SubscriptionPlanUpdateOne {
-	_u.mutation.AddValidityDays(v)
+// AddValidityDays adds f to the "validity_days" field.
+func (_u *SubscriptionPlanUpdateOne) AddValidityDays(f int) *SubscriptionPlanUpdateOne {
+	_u.mutation.AddValidityDays(f)
 	return _u
 }
 
@@ -565,9 +573,23 @@ func (_u *SubscriptionPlanUpdateOne) SetNillableSortOrder(v *int) *SubscriptionP
 	return _u
 }
 
-// AddSortOrder adds value to the "sort_order" field.
-func (_u *SubscriptionPlanUpdateOne) AddSortOrder(v int) *SubscriptionPlanUpdateOne {
-	_u.mutation.AddSortOrder(v)
+// AddSortOrder adds f to the "sort_order" field.
+func (_u *SubscriptionPlanUpdateOne) AddSortOrder(f int) *SubscriptionPlanUpdateOne {
+	_u.mutation.AddSortOrder(f)
+	return _u
+}
+
+// SetCreatedAt sets the "created_at" field.
+func (_u *SubscriptionPlanUpdateOne) SetCreatedAt(v time.Time) *SubscriptionPlanUpdateOne {
+	_u.mutation.SetCreatedAt(v)
+	return _u
+}
+
+// SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
+func (_u *SubscriptionPlanUpdateOne) SetNillableCreatedAt(v *time.Time) *SubscriptionPlanUpdateOne {
+	if v != nil {
+		_u.SetCreatedAt(*v)
+	}
 	return _u
 }
 
@@ -631,30 +653,7 @@ func (_u *SubscriptionPlanUpdateOne) defaults() {
 	}
 }
 
-// check runs all checks and user-defined validators on the builder.
-func (_u *SubscriptionPlanUpdateOne) check() error {
-	if v, ok := _u.mutation.Name(); ok {
-		if err := subscriptionplan.NameValidator(v); err != nil {
-			return &ValidationError{Name: "name", err: fmt.Errorf(`ent: validator failed for field "SubscriptionPlan.name": %w`, err)}
-		}
-	}
-	if v, ok := _u.mutation.ValidityUnit(); ok {
-		if err := subscriptionplan.ValidityUnitValidator(v); err != nil {
-			return &ValidationError{Name: "validity_unit", err: fmt.Errorf(`ent: validator failed for field "SubscriptionPlan.validity_unit": %w`, err)}
-		}
-	}
-	if v, ok := _u.mutation.ProductName(); ok {
-		if err := subscriptionplan.ProductNameValidator(v); err != nil {
-			return &ValidationError{Name: "product_name", err: fmt.Errorf(`ent: validator failed for field "SubscriptionPlan.product_name": %w`, err)}
-		}
-	}
-	return nil
-}
-
 func (_u *SubscriptionPlanUpdateOne) sqlSave(ctx context.Context) (_node *SubscriptionPlan, err error) {
-	if err := _u.check(); err != nil {
-		return _node, err
-	}
 	_spec := sqlgraph.NewUpdateSpec(subscriptionplan.Table, subscriptionplan.Columns, sqlgraph.NewFieldSpec(subscriptionplan.FieldID, field.TypeInt64))
 	id, ok := _u.mutation.ID()
 	if !ok {
@@ -683,9 +682,6 @@ func (_u *SubscriptionPlanUpdateOne) sqlSave(ctx context.Context) (_node *Subscr
 	if value, ok := _u.mutation.GroupID(); ok {
 		_spec.SetField(subscriptionplan.FieldGroupID, field.TypeInt64, value)
 	}
-	if value, ok := _u.mutation.AddedGroupID(); ok {
-		_spec.AddField(subscriptionplan.FieldGroupID, field.TypeInt64, value)
-	}
 	if value, ok := _u.mutation.Name(); ok {
 		_spec.SetField(subscriptionplan.FieldName, field.TypeString, value)
 	}
@@ -706,6 +702,9 @@ func (_u *SubscriptionPlanUpdateOne) sqlSave(ctx context.Context) (_node *Subscr
 	}
 	if _u.mutation.OriginalPriceCleared() {
 		_spec.ClearField(subscriptionplan.FieldOriginalPrice, field.TypeFloat64)
+	}
+	if value, ok := _u.mutation.Currency(); ok {
+		_spec.SetField(subscriptionplan.FieldCurrency, field.TypeString, value)
 	}
 	if value, ok := _u.mutation.ValidityDays(); ok {
 		_spec.SetField(subscriptionplan.FieldValidityDays, field.TypeInt, value)
@@ -730,6 +729,9 @@ func (_u *SubscriptionPlanUpdateOne) sqlSave(ctx context.Context) (_node *Subscr
 	}
 	if value, ok := _u.mutation.AddedSortOrder(); ok {
 		_spec.AddField(subscriptionplan.FieldSortOrder, field.TypeInt, value)
+	}
+	if value, ok := _u.mutation.CreatedAt(); ok {
+		_spec.SetField(subscriptionplan.FieldCreatedAt, field.TypeTime, value)
 	}
 	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(subscriptionplan.FieldUpdatedAt, field.TypeTime, value)

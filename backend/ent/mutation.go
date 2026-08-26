@@ -21921,6 +21921,15 @@ type GroupMutation struct {
 	models_list_config                      *domain.GroupModelsListConfig
 	rpm_limit                               *int
 	addrpm_limit                            *int
+	allowlive                               *bool
+	resetallowlive                          bool
+	maxreasoningeffort                      *string
+	resetmaxreasoningeffort                 bool
+	reasoningeffortmappings                 *[]domain.ReasoningEffortMapping
+	resetreasoningeffortmappings            bool
+	duplicateoperationid                    *string
+	resetduplicateoperationid               bool
+	clearedduplicateoperationid             bool
 	clearedFields                           map[string]struct{}
 	api_keys                                map[int64]struct{}
 	removedapi_keys                         map[int64]struct{}
@@ -24363,9 +24372,65 @@ func (m *GroupMutation) SetRpmLimit(i int) {
 	m.addrpm_limit = nil
 }
 
+// SetAllowLive sets the "allow_live" field.
+func (m *GroupMutation) SetAllowLive(b bool) {
+	m.allowlive = &b
+}
+
+// SetMaxReasoningEffort sets the "max_reasoning_effort" field.
+func (m *GroupMutation) SetMaxReasoningEffort(s string) {
+	m.maxreasoningeffort = &s
+}
+
+// SetReasoningEffortMappings sets the "reasoning_effort_mappings" field.
+func (m *GroupMutation) SetReasoningEffortMappings(d []domain.ReasoningEffortMapping) {
+	m.reasoningeffortmappings = &d
+}
+
+// SetDuplicateOperationID sets the "duplicate_operation_id" field.
+func (m *GroupMutation) SetDuplicateOperationID(s string) {
+	m.duplicateoperationid = &s
+}
+
 // RpmLimit returns the value of the "rpm_limit" field in the mutation.
 func (m *GroupMutation) RpmLimit() (r int, exists bool) {
 	v := m.rpm_limit
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// AllowLive returns the value of the "allow_live" field in the mutation.
+func (m *GroupMutation) AllowLive() (r bool, exists bool) {
+	v := m.allowlive
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// MaxReasoningEffort returns the value of the "max_reasoning_effort" field in the mutation.
+func (m *GroupMutation) MaxReasoningEffort() (r string, exists bool) {
+	v := m.maxreasoningeffort
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ReasoningEffortMappings returns the value of the "reasoning_effort_mappings" field in the mutation.
+func (m *GroupMutation) ReasoningEffortMappings() (r []domain.ReasoningEffortMapping, exists bool) {
+	v := m.reasoningeffortmappings
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// DuplicateOperationID returns the value of the "duplicate_operation_id" field in the mutation.
+func (m *GroupMutation) DuplicateOperationID() (r string, exists bool) {
+	v := m.duplicateoperationid
 	if v == nil {
 		return
 	}
@@ -24411,6 +24476,30 @@ func (m *GroupMutation) AddedRpmLimit() (r int, exists bool) {
 func (m *GroupMutation) ResetRpmLimit() {
 	m.rpm_limit = nil
 	m.addrpm_limit = nil
+}
+
+// ResetAllowLive resets all changes to the "allow_live" field.
+func (m *GroupMutation) ResetAllowLive() {
+	m.allowlive = nil
+	m.resetallowlive = false
+}
+
+// ResetMaxReasoningEffort resets all changes to the "max_reasoning_effort" field.
+func (m *GroupMutation) ResetMaxReasoningEffort() {
+	m.maxreasoningeffort = nil
+	m.resetmaxreasoningeffort = false
+}
+
+// ResetReasoningEffortMappings resets all changes to the "reasoning_effort_mappings" field.
+func (m *GroupMutation) ResetReasoningEffortMappings() {
+	m.reasoningeffortmappings = nil
+	m.resetreasoningeffortmappings = false
+}
+
+// ResetDuplicateOperationID resets all changes to the "duplicate_operation_id" field.
+func (m *GroupMutation) ResetDuplicateOperationID() {
+	m.duplicateoperationid = nil
+	m.resetduplicateoperationid = false
 }
 
 // AddAPIKeyIDs adds the "api_keys" edge to the APIKey entity by ids.
@@ -25020,6 +25109,14 @@ func (m *GroupMutation) Field(name string) (ent.Value, bool) {
 		return m.ModelsListConfig()
 	case group.FieldRpmLimit:
 		return m.RpmLimit()
+	case group.FieldAllowLive:
+		return m.AllowLive()
+	case group.FieldMaxReasoningEffort:
+		return m.MaxReasoningEffort()
+	case group.FieldReasoningEffortMappings:
+		return m.ReasoningEffortMappings()
+	case group.FieldDuplicateOperationID:
+		return m.DuplicateOperationID()
 	}
 	return nil, false
 }
@@ -26010,6 +26107,14 @@ func (m *GroupMutation) ResetField(name string) error {
 		return nil
 	case group.FieldRpmLimit:
 		m.ResetRpmLimit()
+	case group.FieldAllowLive:
+		m.ResetAllowLive()
+	case group.FieldMaxReasoningEffort:
+		m.ResetMaxReasoningEffort()
+	case group.FieldReasoningEffortMappings:
+		m.ResetReasoningEffortMappings()
+	case group.FieldDuplicateOperationID:
+		m.ResetDuplicateOperationID()
 		return nil
 	}
 	return fmt.Errorf("unknown Group field %s", name)
@@ -26149,6 +26254,17 @@ func (m *GroupMutation) RemovedIDs(name string) []ent.Value {
 		return ids
 	}
 	return nil
+}
+
+// DuplicateOperationIDCleared returns whether the "duplicate_operation_id" field was cleared in this mutation.
+func (m *GroupMutation) DuplicateOperationIDCleared() bool {
+	return m.clearedduplicateoperationid
+}
+
+// ClearDuplicateOperationID clears the value of the "duplicate_operation_id" field.
+func (m *GroupMutation) ClearDuplicateOperationID() {
+	m.duplicateoperationid = nil
+	m.clearedduplicateoperationid = true
 }
 
 // ClearedEdges returns all edge names that were cleared in this mutation.
@@ -41975,6 +42091,7 @@ type SubscriptionPlanMutation struct {
 	addprice          *float64
 	original_price    *float64
 	addoriginal_price *float64
+	currency         *string
 	validity_days     *int
 	addvalidity_days  *int
 	validity_unit     *string
@@ -42341,6 +42458,42 @@ func (m *SubscriptionPlanMutation) ResetOriginalPrice() {
 	m.original_price = nil
 	m.addoriginal_price = nil
 	delete(m.clearedFields, subscriptionplan.FieldOriginalPrice)
+}
+
+// SetCurrency sets the "currency" field.
+func (m *SubscriptionPlanMutation) SetCurrency(s string) {
+	m.currency = &s
+}
+
+// Currency returns the value of the "currency" field in the mutation.
+func (m *SubscriptionPlanMutation) Currency() (r string, exists bool) {
+	v := m.currency
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldCurrency returns the old "currency" field's value of the SubscriptionPlan entity.
+// If the SubscriptionPlan object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *SubscriptionPlanMutation) OldCurrency(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldCurrency is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldCurrency requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldCurrency: %w", err)
+	}
+	return oldValue.Currency, nil
+}
+
+// ResetCurrency resets all changes to the "currency" field.
+func (m *SubscriptionPlanMutation) ResetCurrency() {
+	m.currency = nil
 }
 
 // SetValidityDays sets the "validity_days" field.
@@ -42763,6 +42916,8 @@ func (m *SubscriptionPlanMutation) Field(name string) (ent.Value, bool) {
 		return m.Price()
 	case subscriptionplan.FieldOriginalPrice:
 		return m.OriginalPrice()
+	case subscriptionplan.FieldCurrency:
+		return m.Currency()
 	case subscriptionplan.FieldValidityDays:
 		return m.ValidityDays()
 	case subscriptionplan.FieldValidityUnit:
@@ -43026,6 +43181,8 @@ func (m *SubscriptionPlanMutation) ClearField(name string) error {
 	switch name {
 	case subscriptionplan.FieldOriginalPrice:
 		m.ClearOriginalPrice()
+	case subscriptionplan.FieldCurrency:
+		m.ResetCurrency()
 		return nil
 	}
 	return fmt.Errorf("unknown SubscriptionPlan nullable field %s", name)
@@ -43049,6 +43206,8 @@ func (m *SubscriptionPlanMutation) ResetField(name string) error {
 		return nil
 	case subscriptionplan.FieldOriginalPrice:
 		m.ResetOriginalPrice()
+	case subscriptionplan.FieldCurrency:
+		m.ResetCurrency()
 		return nil
 	case subscriptionplan.FieldValidityDays:
 		m.ResetValidityDays()

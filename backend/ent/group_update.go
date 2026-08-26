@@ -907,6 +907,48 @@ func (_u *GroupUpdate) SetNillableRpmLimit(v *int) *GroupUpdate {
 	return _u
 }
 
+// SetAllowLive sets the "allow_live" field.
+func (_u *GroupUpdate) SetAllowLive(v bool) *GroupUpdate {
+	_u.mutation.ResetAllowLive()
+	_u.mutation.SetAllowLive(v)
+	return _u
+}
+
+// SetMaxReasoningEffort sets the "max_reasoning_effort" field.
+func (_u *GroupUpdate) SetMaxReasoningEffort(v string) *GroupUpdate {
+	_u.mutation.ResetMaxReasoningEffort()
+	_u.mutation.SetMaxReasoningEffort(v)
+	return _u
+}
+
+// SetReasoningEffortMappings sets the "reasoning_effort_mappings" field.
+func (_u *GroupUpdate) SetReasoningEffortMappings(v []domain.ReasoningEffortMapping) *GroupUpdate {
+	_u.mutation.ResetReasoningEffortMappings()
+	_u.mutation.SetReasoningEffortMappings(v)
+	return _u
+}
+
+// SetDuplicateOperationID sets the "duplicate_operation_id" field.
+func (_u *GroupUpdate) SetDuplicateOperationID(v string) *GroupUpdate {
+	_u.mutation.ResetDuplicateOperationID()
+	_u.mutation.SetDuplicateOperationID(v)
+	return _u
+}
+
+// SetNillableDuplicateOperationID sets the "duplicate_operation_id" field if the given value is not nil.
+func (_u *GroupUpdate) SetNillableDuplicateOperationID(v *string) *GroupUpdate {
+	if v != nil {
+		_u.SetDuplicateOperationID(*v)
+	}
+	return _u
+}
+
+// ClearDuplicateOperationID clears the value of the "duplicate_operation_id" field.
+func (_u *GroupUpdate) ClearDuplicateOperationID() *GroupUpdate {
+	_u.mutation.ClearDuplicateOperationID()
+	return _u
+}
+
 // AddRpmLimit adds value to the "rpm_limit" field.
 func (_u *GroupUpdate) AddRpmLimit(v int) *GroupUpdate {
 	_u.mutation.AddRpmLimit(v)
@@ -1481,6 +1523,21 @@ func (_u *GroupUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 	}
 	if value, ok := _u.mutation.AddedRpmLimit(); ok {
 		_spec.AddField(group.FieldRpmLimit, field.TypeInt, value)
+	}
+	if value, ok := _u.mutation.AllowLive(); ok {
+		_spec.SetField(group.FieldAllowLive, field.TypeBool, value)
+	}
+	if value, ok := _u.mutation.MaxReasoningEffort(); ok {
+		_spec.SetField(group.FieldMaxReasoningEffort, field.TypeString, value)
+	}
+	if value, ok := _u.mutation.ReasoningEffortMappings(); ok {
+		_spec.SetField(group.FieldReasoningEffortMappings, field.TypeJSON, value)
+	}
+	if value, ok := _u.mutation.DuplicateOperationID(); ok {
+		_spec.SetField(group.FieldDuplicateOperationID, field.TypeString, value)
+	}
+	if _u.mutation.DuplicateOperationIDCleared() {
+		_spec.ClearField(group.FieldDuplicateOperationID, field.TypeString)
 	}
 	if _u.mutation.APIKeysCleared() {
 		edge := &sqlgraph.EdgeSpec{
@@ -2673,6 +2730,48 @@ func (_u *GroupUpdateOne) AddRpmLimit(v int) *GroupUpdateOne {
 	return _u
 }
 
+// SetAllowLive sets the "allow_live" field.
+func (_u *GroupUpdateOne) SetAllowLive(v bool) *GroupUpdateOne {
+	_u.mutation.ResetAllowLive()
+	_u.mutation.SetAllowLive(v)
+	return _u
+}
+
+// SetMaxReasoningEffort sets the "max_reasoning_effort" field.
+func (_u *GroupUpdateOne) SetMaxReasoningEffort(v string) *GroupUpdateOne {
+	_u.mutation.ResetMaxReasoningEffort()
+	_u.mutation.SetMaxReasoningEffort(v)
+	return _u
+}
+
+// SetReasoningEffortMappings sets the "reasoning_effort_mappings" field.
+func (_u *GroupUpdateOne) SetReasoningEffortMappings(v []domain.ReasoningEffortMapping) *GroupUpdateOne {
+	_u.mutation.ResetReasoningEffortMappings()
+	_u.mutation.SetReasoningEffortMappings(v)
+	return _u
+}
+
+// SetDuplicateOperationID sets the "duplicate_operation_id" field.
+func (_u *GroupUpdateOne) SetDuplicateOperationID(v string) *GroupUpdateOne {
+	_u.mutation.ResetDuplicateOperationID()
+	_u.mutation.SetDuplicateOperationID(v)
+	return _u
+}
+
+// SetNillableDuplicateOperationID sets the "duplicate_operation_id" field if the given value is not nil.
+func (_u *GroupUpdateOne) SetNillableDuplicateOperationID(v *string) *GroupUpdateOne {
+	if v != nil {
+		_u.SetDuplicateOperationID(*v)
+	}
+	return _u
+}
+
+// ClearDuplicateOperationID clears the value of the "duplicate_operation_id" field.
+func (_u *GroupUpdateOne) ClearDuplicateOperationID() *GroupUpdateOne {
+	_u.mutation.ClearDuplicateOperationID()
+	return _u
+}
+
 // AddAPIKeyIDs adds the "api_keys" edge to the APIKey entity by IDs.
 func (_u *GroupUpdateOne) AddAPIKeyIDs(ids ...int64) *GroupUpdateOne {
 	_u.mutation.AddAPIKeyIDs(ids...)
@@ -3271,6 +3370,21 @@ func (_u *GroupUpdateOne) sqlSave(ctx context.Context) (_node *Group, err error)
 	}
 	if value, ok := _u.mutation.AddedRpmLimit(); ok {
 		_spec.AddField(group.FieldRpmLimit, field.TypeInt, value)
+	}
+	if value, ok := _u.mutation.AllowLive(); ok {
+		_spec.SetField(group.FieldAllowLive, field.TypeBool, value)
+	}
+	if value, ok := _u.mutation.MaxReasoningEffort(); ok {
+		_spec.SetField(group.FieldMaxReasoningEffort, field.TypeString, value)
+	}
+	if value, ok := _u.mutation.ReasoningEffortMappings(); ok {
+		_spec.SetField(group.FieldReasoningEffortMappings, field.TypeJSON, value)
+	}
+	if value, ok := _u.mutation.DuplicateOperationID(); ok {
+		_spec.SetField(group.FieldDuplicateOperationID, field.TypeString, value)
+	}
+	if _u.mutation.DuplicateOperationIDCleared() {
+		_spec.ClearField(group.FieldDuplicateOperationID, field.TypeString)
 	}
 	if _u.mutation.APIKeysCleared() {
 		edge := &sqlgraph.EdgeSpec{

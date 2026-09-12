@@ -115,6 +115,11 @@ func Status(v string) predicate.Group {
 	return predicate.Group(sql.FieldEQ(FieldStatus, v))
 }
 
+// DuplicateOperationID applies equality check predicate on the "duplicate_operation_id" field. It's identical to DuplicateOperationIDEQ.
+func DuplicateOperationID(v string) predicate.Group {
+	return predicate.Group(sql.FieldEQ(FieldDuplicateOperationID, v))
+}
+
 // Platform applies equality check predicate on the "platform" field. It's identical to PlatformEQ.
 func Platform(v string) predicate.Group {
 	return predicate.Group(sql.FieldEQ(FieldPlatform, v))
@@ -280,6 +285,21 @@ func AllowMessagesDispatch(v bool) predicate.Group {
 	return predicate.Group(sql.FieldEQ(FieldAllowMessagesDispatch, v))
 }
 
+// AllowLive applies equality check predicate on the "allow_live" field. It's identical to AllowLiveEQ.
+func AllowLive(v bool) predicate.Group {
+	return predicate.Group(sql.FieldEQ(FieldAllowLive, v))
+}
+
+// ForceOpenaiFast applies equality check predicate on the "force_openai_fast" field. It's identical to ForceOpenaiFastEQ.
+func ForceOpenaiFast(v bool) predicate.Group {
+	return predicate.Group(sql.FieldEQ(FieldForceOpenaiFast, v))
+}
+
+// FreeOpenaiFast applies equality check predicate on the "free_openai_fast" field. It's identical to FreeOpenaiFastEQ.
+func FreeOpenaiFast(v bool) predicate.Group {
+	return predicate.Group(sql.FieldEQ(FieldFreeOpenaiFast, v))
+}
+
 // RequireOauthOnly applies equality check predicate on the "require_oauth_only" field. It's identical to RequireOauthOnlyEQ.
 func RequireOauthOnly(v bool) predicate.Group {
 	return predicate.Group(sql.FieldEQ(FieldRequireOauthOnly, v))
@@ -300,19 +320,14 @@ func RpmLimit(v int) predicate.Group {
 	return predicate.Group(sql.FieldEQ(FieldRpmLimit, v))
 }
 
-// AllowLive applies equality check predicate on the "allow_live" field. It's identical to AllowLiveEQ.
-func AllowLive(v bool) predicate.Group {
-	return predicate.Group(sql.FieldEQ(FieldAllowLive, v))
-}
-
 // MaxReasoningEffort applies equality check predicate on the "max_reasoning_effort" field. It's identical to MaxReasoningEffortEQ.
 func MaxReasoningEffort(v string) predicate.Group {
 	return predicate.Group(sql.FieldEQ(FieldMaxReasoningEffort, v))
 }
 
-// DuplicateOperationID applies equality check predicate on the "duplicate_operation_id" field. It's identical to DuplicateOperationIDEQ.
-func DuplicateOperationID(v string) predicate.Group {
-	return predicate.Group(sql.FieldEQ(FieldDuplicateOperationID, v))
+// MaxReasoningEffortOverLimit applies equality check predicate on the "max_reasoning_effort_over_limit" field. It's identical to MaxReasoningEffortOverLimitEQ.
+func MaxReasoningEffortOverLimit(v string) predicate.Group {
+	return predicate.Group(sql.FieldEQ(FieldMaxReasoningEffortOverLimit, v))
 }
 
 // ProfitControlEnabled applies equality check predicate on the "profit_control_enabled" field. It's identical to ProfitControlEnabledEQ.
@@ -893,6 +908,81 @@ func StatusEqualFold(v string) predicate.Group {
 // StatusContainsFold applies the ContainsFold predicate on the "status" field.
 func StatusContainsFold(v string) predicate.Group {
 	return predicate.Group(sql.FieldContainsFold(FieldStatus, v))
+}
+
+// DuplicateOperationIDEQ applies the EQ predicate on the "duplicate_operation_id" field.
+func DuplicateOperationIDEQ(v string) predicate.Group {
+	return predicate.Group(sql.FieldEQ(FieldDuplicateOperationID, v))
+}
+
+// DuplicateOperationIDNEQ applies the NEQ predicate on the "duplicate_operation_id" field.
+func DuplicateOperationIDNEQ(v string) predicate.Group {
+	return predicate.Group(sql.FieldNEQ(FieldDuplicateOperationID, v))
+}
+
+// DuplicateOperationIDIn applies the In predicate on the "duplicate_operation_id" field.
+func DuplicateOperationIDIn(vs ...string) predicate.Group {
+	return predicate.Group(sql.FieldIn(FieldDuplicateOperationID, vs...))
+}
+
+// DuplicateOperationIDNotIn applies the NotIn predicate on the "duplicate_operation_id" field.
+func DuplicateOperationIDNotIn(vs ...string) predicate.Group {
+	return predicate.Group(sql.FieldNotIn(FieldDuplicateOperationID, vs...))
+}
+
+// DuplicateOperationIDGT applies the GT predicate on the "duplicate_operation_id" field.
+func DuplicateOperationIDGT(v string) predicate.Group {
+	return predicate.Group(sql.FieldGT(FieldDuplicateOperationID, v))
+}
+
+// DuplicateOperationIDGTE applies the GTE predicate on the "duplicate_operation_id" field.
+func DuplicateOperationIDGTE(v string) predicate.Group {
+	return predicate.Group(sql.FieldGTE(FieldDuplicateOperationID, v))
+}
+
+// DuplicateOperationIDLT applies the LT predicate on the "duplicate_operation_id" field.
+func DuplicateOperationIDLT(v string) predicate.Group {
+	return predicate.Group(sql.FieldLT(FieldDuplicateOperationID, v))
+}
+
+// DuplicateOperationIDLTE applies the LTE predicate on the "duplicate_operation_id" field.
+func DuplicateOperationIDLTE(v string) predicate.Group {
+	return predicate.Group(sql.FieldLTE(FieldDuplicateOperationID, v))
+}
+
+// DuplicateOperationIDContains applies the Contains predicate on the "duplicate_operation_id" field.
+func DuplicateOperationIDContains(v string) predicate.Group {
+	return predicate.Group(sql.FieldContains(FieldDuplicateOperationID, v))
+}
+
+// DuplicateOperationIDHasPrefix applies the HasPrefix predicate on the "duplicate_operation_id" field.
+func DuplicateOperationIDHasPrefix(v string) predicate.Group {
+	return predicate.Group(sql.FieldHasPrefix(FieldDuplicateOperationID, v))
+}
+
+// DuplicateOperationIDHasSuffix applies the HasSuffix predicate on the "duplicate_operation_id" field.
+func DuplicateOperationIDHasSuffix(v string) predicate.Group {
+	return predicate.Group(sql.FieldHasSuffix(FieldDuplicateOperationID, v))
+}
+
+// DuplicateOperationIDIsNil applies the IsNil predicate on the "duplicate_operation_id" field.
+func DuplicateOperationIDIsNil() predicate.Group {
+	return predicate.Group(sql.FieldIsNull(FieldDuplicateOperationID))
+}
+
+// DuplicateOperationIDNotNil applies the NotNil predicate on the "duplicate_operation_id" field.
+func DuplicateOperationIDNotNil() predicate.Group {
+	return predicate.Group(sql.FieldNotNull(FieldDuplicateOperationID))
+}
+
+// DuplicateOperationIDEqualFold applies the EqualFold predicate on the "duplicate_operation_id" field.
+func DuplicateOperationIDEqualFold(v string) predicate.Group {
+	return predicate.Group(sql.FieldEqualFold(FieldDuplicateOperationID, v))
+}
+
+// DuplicateOperationIDContainsFold applies the ContainsFold predicate on the "duplicate_operation_id" field.
+func DuplicateOperationIDContainsFold(v string) predicate.Group {
+	return predicate.Group(sql.FieldContainsFold(FieldDuplicateOperationID, v))
 }
 
 // PlatformEQ applies the EQ predicate on the "platform" field.
@@ -2185,6 +2275,36 @@ func AllowMessagesDispatchNEQ(v bool) predicate.Group {
 	return predicate.Group(sql.FieldNEQ(FieldAllowMessagesDispatch, v))
 }
 
+// AllowLiveEQ applies the EQ predicate on the "allow_live" field.
+func AllowLiveEQ(v bool) predicate.Group {
+	return predicate.Group(sql.FieldEQ(FieldAllowLive, v))
+}
+
+// AllowLiveNEQ applies the NEQ predicate on the "allow_live" field.
+func AllowLiveNEQ(v bool) predicate.Group {
+	return predicate.Group(sql.FieldNEQ(FieldAllowLive, v))
+}
+
+// ForceOpenaiFastEQ applies the EQ predicate on the "force_openai_fast" field.
+func ForceOpenaiFastEQ(v bool) predicate.Group {
+	return predicate.Group(sql.FieldEQ(FieldForceOpenaiFast, v))
+}
+
+// ForceOpenaiFastNEQ applies the NEQ predicate on the "force_openai_fast" field.
+func ForceOpenaiFastNEQ(v bool) predicate.Group {
+	return predicate.Group(sql.FieldNEQ(FieldForceOpenaiFast, v))
+}
+
+// FreeOpenaiFastEQ applies the EQ predicate on the "free_openai_fast" field.
+func FreeOpenaiFastEQ(v bool) predicate.Group {
+	return predicate.Group(sql.FieldEQ(FieldFreeOpenaiFast, v))
+}
+
+// FreeOpenaiFastNEQ applies the NEQ predicate on the "free_openai_fast" field.
+func FreeOpenaiFastNEQ(v bool) predicate.Group {
+	return predicate.Group(sql.FieldNEQ(FieldFreeOpenaiFast, v))
+}
+
 // RequireOauthOnlyEQ applies the EQ predicate on the "require_oauth_only" field.
 func RequireOauthOnlyEQ(v bool) predicate.Group {
 	return predicate.Group(sql.FieldEQ(FieldRequireOauthOnly, v))
@@ -2310,16 +2430,6 @@ func RpmLimitLTE(v int) predicate.Group {
 	return predicate.Group(sql.FieldLTE(FieldRpmLimit, v))
 }
 
-// AllowLiveEQ applies the EQ predicate on the "allow_live" field.
-func AllowLiveEQ(v bool) predicate.Group {
-	return predicate.Group(sql.FieldEQ(FieldAllowLive, v))
-}
-
-// AllowLiveNEQ applies the NEQ predicate on the "allow_live" field.
-func AllowLiveNEQ(v bool) predicate.Group {
-	return predicate.Group(sql.FieldNEQ(FieldAllowLive, v))
-}
-
 // MaxReasoningEffortEQ applies the EQ predicate on the "max_reasoning_effort" field.
 func MaxReasoningEffortEQ(v string) predicate.Group {
 	return predicate.Group(sql.FieldEQ(FieldMaxReasoningEffort, v))
@@ -2385,79 +2495,69 @@ func MaxReasoningEffortContainsFold(v string) predicate.Group {
 	return predicate.Group(sql.FieldContainsFold(FieldMaxReasoningEffort, v))
 }
 
-// DuplicateOperationIDEQ applies the EQ predicate on the "duplicate_operation_id" field.
-func DuplicateOperationIDEQ(v string) predicate.Group {
-	return predicate.Group(sql.FieldEQ(FieldDuplicateOperationID, v))
+// MaxReasoningEffortOverLimitEQ applies the EQ predicate on the "max_reasoning_effort_over_limit" field.
+func MaxReasoningEffortOverLimitEQ(v string) predicate.Group {
+	return predicate.Group(sql.FieldEQ(FieldMaxReasoningEffortOverLimit, v))
 }
 
-// DuplicateOperationIDNEQ applies the NEQ predicate on the "duplicate_operation_id" field.
-func DuplicateOperationIDNEQ(v string) predicate.Group {
-	return predicate.Group(sql.FieldNEQ(FieldDuplicateOperationID, v))
+// MaxReasoningEffortOverLimitNEQ applies the NEQ predicate on the "max_reasoning_effort_over_limit" field.
+func MaxReasoningEffortOverLimitNEQ(v string) predicate.Group {
+	return predicate.Group(sql.FieldNEQ(FieldMaxReasoningEffortOverLimit, v))
 }
 
-// DuplicateOperationIDIn applies the In predicate on the "duplicate_operation_id" field.
-func DuplicateOperationIDIn(vs ...string) predicate.Group {
-	return predicate.Group(sql.FieldIn(FieldDuplicateOperationID, vs...))
+// MaxReasoningEffortOverLimitIn applies the In predicate on the "max_reasoning_effort_over_limit" field.
+func MaxReasoningEffortOverLimitIn(vs ...string) predicate.Group {
+	return predicate.Group(sql.FieldIn(FieldMaxReasoningEffortOverLimit, vs...))
 }
 
-// DuplicateOperationIDNotIn applies the NotIn predicate on the "duplicate_operation_id" field.
-func DuplicateOperationIDNotIn(vs ...string) predicate.Group {
-	return predicate.Group(sql.FieldNotIn(FieldDuplicateOperationID, vs...))
+// MaxReasoningEffortOverLimitNotIn applies the NotIn predicate on the "max_reasoning_effort_over_limit" field.
+func MaxReasoningEffortOverLimitNotIn(vs ...string) predicate.Group {
+	return predicate.Group(sql.FieldNotIn(FieldMaxReasoningEffortOverLimit, vs...))
 }
 
-// DuplicateOperationIDGT applies the GT predicate on the "duplicate_operation_id" field.
-func DuplicateOperationIDGT(v string) predicate.Group {
-	return predicate.Group(sql.FieldGT(FieldDuplicateOperationID, v))
+// MaxReasoningEffortOverLimitGT applies the GT predicate on the "max_reasoning_effort_over_limit" field.
+func MaxReasoningEffortOverLimitGT(v string) predicate.Group {
+	return predicate.Group(sql.FieldGT(FieldMaxReasoningEffortOverLimit, v))
 }
 
-// DuplicateOperationIDGTE applies the GTE predicate on the "duplicate_operation_id" field.
-func DuplicateOperationIDGTE(v string) predicate.Group {
-	return predicate.Group(sql.FieldGTE(FieldDuplicateOperationID, v))
+// MaxReasoningEffortOverLimitGTE applies the GTE predicate on the "max_reasoning_effort_over_limit" field.
+func MaxReasoningEffortOverLimitGTE(v string) predicate.Group {
+	return predicate.Group(sql.FieldGTE(FieldMaxReasoningEffortOverLimit, v))
 }
 
-// DuplicateOperationIDLT applies the LT predicate on the "duplicate_operation_id" field.
-func DuplicateOperationIDLT(v string) predicate.Group {
-	return predicate.Group(sql.FieldLT(FieldDuplicateOperationID, v))
+// MaxReasoningEffortOverLimitLT applies the LT predicate on the "max_reasoning_effort_over_limit" field.
+func MaxReasoningEffortOverLimitLT(v string) predicate.Group {
+	return predicate.Group(sql.FieldLT(FieldMaxReasoningEffortOverLimit, v))
 }
 
-// DuplicateOperationIDLTE applies the LTE predicate on the "duplicate_operation_id" field.
-func DuplicateOperationIDLTE(v string) predicate.Group {
-	return predicate.Group(sql.FieldLTE(FieldDuplicateOperationID, v))
+// MaxReasoningEffortOverLimitLTE applies the LTE predicate on the "max_reasoning_effort_over_limit" field.
+func MaxReasoningEffortOverLimitLTE(v string) predicate.Group {
+	return predicate.Group(sql.FieldLTE(FieldMaxReasoningEffortOverLimit, v))
 }
 
-// DuplicateOperationIDContains applies the Contains predicate on the "duplicate_operation_id" field.
-func DuplicateOperationIDContains(v string) predicate.Group {
-	return predicate.Group(sql.FieldContains(FieldDuplicateOperationID, v))
+// MaxReasoningEffortOverLimitContains applies the Contains predicate on the "max_reasoning_effort_over_limit" field.
+func MaxReasoningEffortOverLimitContains(v string) predicate.Group {
+	return predicate.Group(sql.FieldContains(FieldMaxReasoningEffortOverLimit, v))
 }
 
-// DuplicateOperationIDHasPrefix applies the HasPrefix predicate on the "duplicate_operation_id" field.
-func DuplicateOperationIDHasPrefix(v string) predicate.Group {
-	return predicate.Group(sql.FieldHasPrefix(FieldDuplicateOperationID, v))
+// MaxReasoningEffortOverLimitHasPrefix applies the HasPrefix predicate on the "max_reasoning_effort_over_limit" field.
+func MaxReasoningEffortOverLimitHasPrefix(v string) predicate.Group {
+	return predicate.Group(sql.FieldHasPrefix(FieldMaxReasoningEffortOverLimit, v))
 }
 
-// DuplicateOperationIDHasSuffix applies the HasSuffix predicate on the "duplicate_operation_id" field.
-func DuplicateOperationIDHasSuffix(v string) predicate.Group {
-	return predicate.Group(sql.FieldHasSuffix(FieldDuplicateOperationID, v))
+// MaxReasoningEffortOverLimitHasSuffix applies the HasSuffix predicate on the "max_reasoning_effort_over_limit" field.
+func MaxReasoningEffortOverLimitHasSuffix(v string) predicate.Group {
+	return predicate.Group(sql.FieldHasSuffix(FieldMaxReasoningEffortOverLimit, v))
 }
 
-// DuplicateOperationIDIsNil applies the IsNil predicate on the "duplicate_operation_id" field.
-func DuplicateOperationIDIsNil() predicate.Group {
-	return predicate.Group(sql.FieldIsNull(FieldDuplicateOperationID))
+// MaxReasoningEffortOverLimitEqualFold applies the EqualFold predicate on the "max_reasoning_effort_over_limit" field.
+func MaxReasoningEffortOverLimitEqualFold(v string) predicate.Group {
+	return predicate.Group(sql.FieldEqualFold(FieldMaxReasoningEffortOverLimit, v))
 }
 
-// DuplicateOperationIDNotNil applies the NotNil predicate on the "duplicate_operation_id" field.
-func DuplicateOperationIDNotNil() predicate.Group {
-	return predicate.Group(sql.FieldNotNull(FieldDuplicateOperationID))
-}
-
-// DuplicateOperationIDEqualFold applies the EqualFold predicate on the "duplicate_operation_id" field.
-func DuplicateOperationIDEqualFold(v string) predicate.Group {
-	return predicate.Group(sql.FieldEqualFold(FieldDuplicateOperationID, v))
-}
-
-// DuplicateOperationIDContainsFold applies the ContainsFold predicate on the "duplicate_operation_id" field.
-func DuplicateOperationIDContainsFold(v string) predicate.Group {
-	return predicate.Group(sql.FieldContainsFold(FieldDuplicateOperationID, v))
+// MaxReasoningEffortOverLimitContainsFold applies the ContainsFold predicate on the "max_reasoning_effort_over_limit" field.
+func MaxReasoningEffortOverLimitContainsFold(v string) predicate.Group {
+	return predicate.Group(sql.FieldContainsFold(FieldMaxReasoningEffortOverLimit, v))
 }
 
 // ProfitControlEnabledEQ applies the EQ predicate on the "profit_control_enabled" field.

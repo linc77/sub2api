@@ -975,6 +975,48 @@ func (_u *GroupUpdate) SetNillableAllowMessagesDispatch(v *bool) *GroupUpdate {
 	return _u
 }
 
+// SetAllowLive sets the "allow_live" field.
+func (_u *GroupUpdate) SetAllowLive(v bool) *GroupUpdate {
+	_u.mutation.SetAllowLive(v)
+	return _u
+}
+
+// SetNillableAllowLive sets the "allow_live" field if the given value is not nil.
+func (_u *GroupUpdate) SetNillableAllowLive(v *bool) *GroupUpdate {
+	if v != nil {
+		_u.SetAllowLive(*v)
+	}
+	return _u
+}
+
+// SetForceOpenaiFast sets the "force_openai_fast" field.
+func (_u *GroupUpdate) SetForceOpenaiFast(v bool) *GroupUpdate {
+	_u.mutation.SetForceOpenaiFast(v)
+	return _u
+}
+
+// SetNillableForceOpenaiFast sets the "force_openai_fast" field if the given value is not nil.
+func (_u *GroupUpdate) SetNillableForceOpenaiFast(v *bool) *GroupUpdate {
+	if v != nil {
+		_u.SetForceOpenaiFast(*v)
+	}
+	return _u
+}
+
+// SetFreeOpenaiFast sets the "free_openai_fast" field.
+func (_u *GroupUpdate) SetFreeOpenaiFast(v bool) *GroupUpdate {
+	_u.mutation.SetFreeOpenaiFast(v)
+	return _u
+}
+
+// SetNillableFreeOpenaiFast sets the "free_openai_fast" field if the given value is not nil.
+func (_u *GroupUpdate) SetNillableFreeOpenaiFast(v *bool) *GroupUpdate {
+	if v != nil {
+		_u.SetFreeOpenaiFast(*v)
+	}
+	return _u
+}
+
 // SetRequireOauthOnly sets the "require_oauth_only" field.
 func (_u *GroupUpdate) SetRequireOauthOnly(v bool) *GroupUpdate {
 	_u.mutation.SetRequireOauthOnly(v)
@@ -1031,16 +1073,30 @@ func (_u *GroupUpdate) SetNillableMessagesDispatchModelConfig(v *domain.OpenAIMe
 	return _u
 }
 
-// SetModelsListConfig sets the "models_list_config" field.
-func (_u *GroupUpdate) SetModelsListConfig(v domain.GroupModelsListConfig) *GroupUpdate {
-	_u.mutation.SetModelsListConfig(v)
+// SetModelAllowlist sets the "model_allowlist" field.
+func (_u *GroupUpdate) SetModelAllowlist(v domain.GroupModelAllowlist) *GroupUpdate {
+	_u.mutation.SetModelAllowlist(v)
 	return _u
 }
 
-// SetNillableModelsListConfig sets the "models_list_config" field if the given value is not nil.
-func (_u *GroupUpdate) SetNillableModelsListConfig(v *domain.GroupModelsListConfig) *GroupUpdate {
+// SetNillableModelAllowlist sets the "model_allowlist" field if the given value is not nil.
+func (_u *GroupUpdate) SetNillableModelAllowlist(v *domain.GroupModelAllowlist) *GroupUpdate {
 	if v != nil {
-		_u.SetModelsListConfig(*v)
+		_u.SetModelAllowlist(*v)
+	}
+	return _u
+}
+
+// SetCodexModelsManifestConfig sets the "codex_models_manifest_config" field.
+func (_u *GroupUpdate) SetCodexModelsManifestConfig(v domain.GroupCodexModelsManifestConfig) *GroupUpdate {
+	_u.mutation.SetCodexModelsManifestConfig(v)
+	return _u
+}
+
+// SetNillableCodexModelsManifestConfig sets the "codex_models_manifest_config" field if the given value is not nil.
+func (_u *GroupUpdate) SetNillableCodexModelsManifestConfig(v *domain.GroupCodexModelsManifestConfig) *GroupUpdate {
+	if v != nil {
+		_u.SetCodexModelsManifestConfig(*v)
 	}
 	return _u
 }
@@ -1066,20 +1122,6 @@ func (_u *GroupUpdate) AddRpmLimit(v int) *GroupUpdate {
 	return _u
 }
 
-// SetAllowLive sets the "allow_live" field.
-func (_u *GroupUpdate) SetAllowLive(v bool) *GroupUpdate {
-	_u.mutation.SetAllowLive(v)
-	return _u
-}
-
-// SetNillableAllowLive sets the "allow_live" field if the given value is not nil.
-func (_u *GroupUpdate) SetNillableAllowLive(v *bool) *GroupUpdate {
-	if v != nil {
-		_u.SetAllowLive(*v)
-	}
-	return _u
-}
-
 // SetMaxReasoningEffort sets the "max_reasoning_effort" field.
 func (_u *GroupUpdate) SetMaxReasoningEffort(v string) *GroupUpdate {
 	_u.mutation.SetMaxReasoningEffort(v)
@@ -1094,6 +1136,20 @@ func (_u *GroupUpdate) SetNillableMaxReasoningEffort(v *string) *GroupUpdate {
 	return _u
 }
 
+// SetMaxReasoningEffortOverLimit sets the "max_reasoning_effort_over_limit" field.
+func (_u *GroupUpdate) SetMaxReasoningEffortOverLimit(v string) *GroupUpdate {
+	_u.mutation.SetMaxReasoningEffortOverLimit(v)
+	return _u
+}
+
+// SetNillableMaxReasoningEffortOverLimit sets the "max_reasoning_effort_over_limit" field if the given value is not nil.
+func (_u *GroupUpdate) SetNillableMaxReasoningEffortOverLimit(v *string) *GroupUpdate {
+	if v != nil {
+		_u.SetMaxReasoningEffortOverLimit(*v)
+	}
+	return _u
+}
+
 // SetReasoningEffortMappings sets the "reasoning_effort_mappings" field.
 func (_u *GroupUpdate) SetReasoningEffortMappings(v []domain.ReasoningEffortMapping) *GroupUpdate {
 	_u.mutation.SetReasoningEffortMappings(v)
@@ -1103,26 +1159,6 @@ func (_u *GroupUpdate) SetReasoningEffortMappings(v []domain.ReasoningEffortMapp
 // AppendReasoningEffortMappings appends value to the "reasoning_effort_mappings" field.
 func (_u *GroupUpdate) AppendReasoningEffortMappings(v []domain.ReasoningEffortMapping) *GroupUpdate {
 	_u.mutation.AppendReasoningEffortMappings(v)
-	return _u
-}
-
-// SetDuplicateOperationID sets the "duplicate_operation_id" field.
-func (_u *GroupUpdate) SetDuplicateOperationID(v string) *GroupUpdate {
-	_u.mutation.SetDuplicateOperationID(v)
-	return _u
-}
-
-// SetNillableDuplicateOperationID sets the "duplicate_operation_id" field if the given value is not nil.
-func (_u *GroupUpdate) SetNillableDuplicateOperationID(v *string) *GroupUpdate {
-	if v != nil {
-		_u.SetDuplicateOperationID(*v)
-	}
-	return _u
-}
-
-// ClearDuplicateOperationID clears the value of the "duplicate_operation_id" field.
-func (_u *GroupUpdate) ClearDuplicateOperationID() *GroupUpdate {
-	_u.mutation.ClearDuplicateOperationID()
 	return _u
 }
 
@@ -1507,9 +1543,9 @@ func (_u *GroupUpdate) check() error {
 			return &ValidationError{Name: "max_reasoning_effort", err: fmt.Errorf(`ent: validator failed for field "Group.max_reasoning_effort": %w`, err)}
 		}
 	}
-	if v, ok := _u.mutation.DuplicateOperationID(); ok {
-		if err := group.DuplicateOperationIDValidator(v); err != nil {
-			return &ValidationError{Name: "duplicate_operation_id", err: fmt.Errorf(`ent: validator failed for field "Group.duplicate_operation_id": %w`, err)}
+	if v, ok := _u.mutation.MaxReasoningEffortOverLimit(); ok {
+		if err := group.MaxReasoningEffortOverLimitValidator(v); err != nil {
+			return &ValidationError{Name: "max_reasoning_effort_over_limit", err: fmt.Errorf(`ent: validator failed for field "Group.max_reasoning_effort_over_limit": %w`, err)}
 		}
 	}
 	return nil
@@ -1571,6 +1607,9 @@ func (_u *GroupUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 	}
 	if value, ok := _u.mutation.Status(); ok {
 		_spec.SetField(group.FieldStatus, field.TypeString, value)
+	}
+	if _u.mutation.DuplicateOperationIDCleared() {
+		_spec.ClearField(group.FieldDuplicateOperationID, field.TypeString)
 	}
 	if value, ok := _u.mutation.Platform(); ok {
 		_spec.SetField(group.FieldPlatform, field.TypeString, value)
@@ -1816,6 +1855,15 @@ func (_u *GroupUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 	if value, ok := _u.mutation.AllowMessagesDispatch(); ok {
 		_spec.SetField(group.FieldAllowMessagesDispatch, field.TypeBool, value)
 	}
+	if value, ok := _u.mutation.AllowLive(); ok {
+		_spec.SetField(group.FieldAllowLive, field.TypeBool, value)
+	}
+	if value, ok := _u.mutation.ForceOpenaiFast(); ok {
+		_spec.SetField(group.FieldForceOpenaiFast, field.TypeBool, value)
+	}
+	if value, ok := _u.mutation.FreeOpenaiFast(); ok {
+		_spec.SetField(group.FieldFreeOpenaiFast, field.TypeBool, value)
+	}
 	if value, ok := _u.mutation.RequireOauthOnly(); ok {
 		_spec.SetField(group.FieldRequireOauthOnly, field.TypeBool, value)
 	}
@@ -1828,8 +1876,11 @@ func (_u *GroupUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 	if value, ok := _u.mutation.MessagesDispatchModelConfig(); ok {
 		_spec.SetField(group.FieldMessagesDispatchModelConfig, field.TypeJSON, value)
 	}
-	if value, ok := _u.mutation.ModelsListConfig(); ok {
-		_spec.SetField(group.FieldModelsListConfig, field.TypeJSON, value)
+	if value, ok := _u.mutation.ModelAllowlist(); ok {
+		_spec.SetField(group.FieldModelAllowlist, field.TypeJSON, value)
+	}
+	if value, ok := _u.mutation.CodexModelsManifestConfig(); ok {
+		_spec.SetField(group.FieldCodexModelsManifestConfig, field.TypeJSON, value)
 	}
 	if value, ok := _u.mutation.RpmLimit(); ok {
 		_spec.SetField(group.FieldRpmLimit, field.TypeInt, value)
@@ -1837,11 +1888,11 @@ func (_u *GroupUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 	if value, ok := _u.mutation.AddedRpmLimit(); ok {
 		_spec.AddField(group.FieldRpmLimit, field.TypeInt, value)
 	}
-	if value, ok := _u.mutation.AllowLive(); ok {
-		_spec.SetField(group.FieldAllowLive, field.TypeBool, value)
-	}
 	if value, ok := _u.mutation.MaxReasoningEffort(); ok {
 		_spec.SetField(group.FieldMaxReasoningEffort, field.TypeString, value)
+	}
+	if value, ok := _u.mutation.MaxReasoningEffortOverLimit(); ok {
+		_spec.SetField(group.FieldMaxReasoningEffortOverLimit, field.TypeString, value)
 	}
 	if value, ok := _u.mutation.ReasoningEffortMappings(); ok {
 		_spec.SetField(group.FieldReasoningEffortMappings, field.TypeJSON, value)
@@ -1850,12 +1901,6 @@ func (_u *GroupUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, group.FieldReasoningEffortMappings, value)
 		})
-	}
-	if value, ok := _u.mutation.DuplicateOperationID(); ok {
-		_spec.SetField(group.FieldDuplicateOperationID, field.TypeString, value)
-	}
-	if _u.mutation.DuplicateOperationIDCleared() {
-		_spec.ClearField(group.FieldDuplicateOperationID, field.TypeString)
 	}
 	if value, ok := _u.mutation.ProfitControlEnabled(); ok {
 		_spec.SetField(group.FieldProfitControlEnabled, field.TypeBool, value)
@@ -3124,6 +3169,48 @@ func (_u *GroupUpdateOne) SetNillableAllowMessagesDispatch(v *bool) *GroupUpdate
 	return _u
 }
 
+// SetAllowLive sets the "allow_live" field.
+func (_u *GroupUpdateOne) SetAllowLive(v bool) *GroupUpdateOne {
+	_u.mutation.SetAllowLive(v)
+	return _u
+}
+
+// SetNillableAllowLive sets the "allow_live" field if the given value is not nil.
+func (_u *GroupUpdateOne) SetNillableAllowLive(v *bool) *GroupUpdateOne {
+	if v != nil {
+		_u.SetAllowLive(*v)
+	}
+	return _u
+}
+
+// SetForceOpenaiFast sets the "force_openai_fast" field.
+func (_u *GroupUpdateOne) SetForceOpenaiFast(v bool) *GroupUpdateOne {
+	_u.mutation.SetForceOpenaiFast(v)
+	return _u
+}
+
+// SetNillableForceOpenaiFast sets the "force_openai_fast" field if the given value is not nil.
+func (_u *GroupUpdateOne) SetNillableForceOpenaiFast(v *bool) *GroupUpdateOne {
+	if v != nil {
+		_u.SetForceOpenaiFast(*v)
+	}
+	return _u
+}
+
+// SetFreeOpenaiFast sets the "free_openai_fast" field.
+func (_u *GroupUpdateOne) SetFreeOpenaiFast(v bool) *GroupUpdateOne {
+	_u.mutation.SetFreeOpenaiFast(v)
+	return _u
+}
+
+// SetNillableFreeOpenaiFast sets the "free_openai_fast" field if the given value is not nil.
+func (_u *GroupUpdateOne) SetNillableFreeOpenaiFast(v *bool) *GroupUpdateOne {
+	if v != nil {
+		_u.SetFreeOpenaiFast(*v)
+	}
+	return _u
+}
+
 // SetRequireOauthOnly sets the "require_oauth_only" field.
 func (_u *GroupUpdateOne) SetRequireOauthOnly(v bool) *GroupUpdateOne {
 	_u.mutation.SetRequireOauthOnly(v)
@@ -3180,16 +3267,30 @@ func (_u *GroupUpdateOne) SetNillableMessagesDispatchModelConfig(v *domain.OpenA
 	return _u
 }
 
-// SetModelsListConfig sets the "models_list_config" field.
-func (_u *GroupUpdateOne) SetModelsListConfig(v domain.GroupModelsListConfig) *GroupUpdateOne {
-	_u.mutation.SetModelsListConfig(v)
+// SetModelAllowlist sets the "model_allowlist" field.
+func (_u *GroupUpdateOne) SetModelAllowlist(v domain.GroupModelAllowlist) *GroupUpdateOne {
+	_u.mutation.SetModelAllowlist(v)
 	return _u
 }
 
-// SetNillableModelsListConfig sets the "models_list_config" field if the given value is not nil.
-func (_u *GroupUpdateOne) SetNillableModelsListConfig(v *domain.GroupModelsListConfig) *GroupUpdateOne {
+// SetNillableModelAllowlist sets the "model_allowlist" field if the given value is not nil.
+func (_u *GroupUpdateOne) SetNillableModelAllowlist(v *domain.GroupModelAllowlist) *GroupUpdateOne {
 	if v != nil {
-		_u.SetModelsListConfig(*v)
+		_u.SetModelAllowlist(*v)
+	}
+	return _u
+}
+
+// SetCodexModelsManifestConfig sets the "codex_models_manifest_config" field.
+func (_u *GroupUpdateOne) SetCodexModelsManifestConfig(v domain.GroupCodexModelsManifestConfig) *GroupUpdateOne {
+	_u.mutation.SetCodexModelsManifestConfig(v)
+	return _u
+}
+
+// SetNillableCodexModelsManifestConfig sets the "codex_models_manifest_config" field if the given value is not nil.
+func (_u *GroupUpdateOne) SetNillableCodexModelsManifestConfig(v *domain.GroupCodexModelsManifestConfig) *GroupUpdateOne {
+	if v != nil {
+		_u.SetCodexModelsManifestConfig(*v)
 	}
 	return _u
 }
@@ -3215,20 +3316,6 @@ func (_u *GroupUpdateOne) AddRpmLimit(v int) *GroupUpdateOne {
 	return _u
 }
 
-// SetAllowLive sets the "allow_live" field.
-func (_u *GroupUpdateOne) SetAllowLive(v bool) *GroupUpdateOne {
-	_u.mutation.SetAllowLive(v)
-	return _u
-}
-
-// SetNillableAllowLive sets the "allow_live" field if the given value is not nil.
-func (_u *GroupUpdateOne) SetNillableAllowLive(v *bool) *GroupUpdateOne {
-	if v != nil {
-		_u.SetAllowLive(*v)
-	}
-	return _u
-}
-
 // SetMaxReasoningEffort sets the "max_reasoning_effort" field.
 func (_u *GroupUpdateOne) SetMaxReasoningEffort(v string) *GroupUpdateOne {
 	_u.mutation.SetMaxReasoningEffort(v)
@@ -3243,6 +3330,20 @@ func (_u *GroupUpdateOne) SetNillableMaxReasoningEffort(v *string) *GroupUpdateO
 	return _u
 }
 
+// SetMaxReasoningEffortOverLimit sets the "max_reasoning_effort_over_limit" field.
+func (_u *GroupUpdateOne) SetMaxReasoningEffortOverLimit(v string) *GroupUpdateOne {
+	_u.mutation.SetMaxReasoningEffortOverLimit(v)
+	return _u
+}
+
+// SetNillableMaxReasoningEffortOverLimit sets the "max_reasoning_effort_over_limit" field if the given value is not nil.
+func (_u *GroupUpdateOne) SetNillableMaxReasoningEffortOverLimit(v *string) *GroupUpdateOne {
+	if v != nil {
+		_u.SetMaxReasoningEffortOverLimit(*v)
+	}
+	return _u
+}
+
 // SetReasoningEffortMappings sets the "reasoning_effort_mappings" field.
 func (_u *GroupUpdateOne) SetReasoningEffortMappings(v []domain.ReasoningEffortMapping) *GroupUpdateOne {
 	_u.mutation.SetReasoningEffortMappings(v)
@@ -3252,26 +3353,6 @@ func (_u *GroupUpdateOne) SetReasoningEffortMappings(v []domain.ReasoningEffortM
 // AppendReasoningEffortMappings appends value to the "reasoning_effort_mappings" field.
 func (_u *GroupUpdateOne) AppendReasoningEffortMappings(v []domain.ReasoningEffortMapping) *GroupUpdateOne {
 	_u.mutation.AppendReasoningEffortMappings(v)
-	return _u
-}
-
-// SetDuplicateOperationID sets the "duplicate_operation_id" field.
-func (_u *GroupUpdateOne) SetDuplicateOperationID(v string) *GroupUpdateOne {
-	_u.mutation.SetDuplicateOperationID(v)
-	return _u
-}
-
-// SetNillableDuplicateOperationID sets the "duplicate_operation_id" field if the given value is not nil.
-func (_u *GroupUpdateOne) SetNillableDuplicateOperationID(v *string) *GroupUpdateOne {
-	if v != nil {
-		_u.SetDuplicateOperationID(*v)
-	}
-	return _u
-}
-
-// ClearDuplicateOperationID clears the value of the "duplicate_operation_id" field.
-func (_u *GroupUpdateOne) ClearDuplicateOperationID() *GroupUpdateOne {
-	_u.mutation.ClearDuplicateOperationID()
 	return _u
 }
 
@@ -3669,9 +3750,9 @@ func (_u *GroupUpdateOne) check() error {
 			return &ValidationError{Name: "max_reasoning_effort", err: fmt.Errorf(`ent: validator failed for field "Group.max_reasoning_effort": %w`, err)}
 		}
 	}
-	if v, ok := _u.mutation.DuplicateOperationID(); ok {
-		if err := group.DuplicateOperationIDValidator(v); err != nil {
-			return &ValidationError{Name: "duplicate_operation_id", err: fmt.Errorf(`ent: validator failed for field "Group.duplicate_operation_id": %w`, err)}
+	if v, ok := _u.mutation.MaxReasoningEffortOverLimit(); ok {
+		if err := group.MaxReasoningEffortOverLimitValidator(v); err != nil {
+			return &ValidationError{Name: "max_reasoning_effort_over_limit", err: fmt.Errorf(`ent: validator failed for field "Group.max_reasoning_effort_over_limit": %w`, err)}
 		}
 	}
 	return nil
@@ -3750,6 +3831,9 @@ func (_u *GroupUpdateOne) sqlSave(ctx context.Context) (_node *Group, err error)
 	}
 	if value, ok := _u.mutation.Status(); ok {
 		_spec.SetField(group.FieldStatus, field.TypeString, value)
+	}
+	if _u.mutation.DuplicateOperationIDCleared() {
+		_spec.ClearField(group.FieldDuplicateOperationID, field.TypeString)
 	}
 	if value, ok := _u.mutation.Platform(); ok {
 		_spec.SetField(group.FieldPlatform, field.TypeString, value)
@@ -3995,6 +4079,15 @@ func (_u *GroupUpdateOne) sqlSave(ctx context.Context) (_node *Group, err error)
 	if value, ok := _u.mutation.AllowMessagesDispatch(); ok {
 		_spec.SetField(group.FieldAllowMessagesDispatch, field.TypeBool, value)
 	}
+	if value, ok := _u.mutation.AllowLive(); ok {
+		_spec.SetField(group.FieldAllowLive, field.TypeBool, value)
+	}
+	if value, ok := _u.mutation.ForceOpenaiFast(); ok {
+		_spec.SetField(group.FieldForceOpenaiFast, field.TypeBool, value)
+	}
+	if value, ok := _u.mutation.FreeOpenaiFast(); ok {
+		_spec.SetField(group.FieldFreeOpenaiFast, field.TypeBool, value)
+	}
 	if value, ok := _u.mutation.RequireOauthOnly(); ok {
 		_spec.SetField(group.FieldRequireOauthOnly, field.TypeBool, value)
 	}
@@ -4007,8 +4100,11 @@ func (_u *GroupUpdateOne) sqlSave(ctx context.Context) (_node *Group, err error)
 	if value, ok := _u.mutation.MessagesDispatchModelConfig(); ok {
 		_spec.SetField(group.FieldMessagesDispatchModelConfig, field.TypeJSON, value)
 	}
-	if value, ok := _u.mutation.ModelsListConfig(); ok {
-		_spec.SetField(group.FieldModelsListConfig, field.TypeJSON, value)
+	if value, ok := _u.mutation.ModelAllowlist(); ok {
+		_spec.SetField(group.FieldModelAllowlist, field.TypeJSON, value)
+	}
+	if value, ok := _u.mutation.CodexModelsManifestConfig(); ok {
+		_spec.SetField(group.FieldCodexModelsManifestConfig, field.TypeJSON, value)
 	}
 	if value, ok := _u.mutation.RpmLimit(); ok {
 		_spec.SetField(group.FieldRpmLimit, field.TypeInt, value)
@@ -4016,11 +4112,11 @@ func (_u *GroupUpdateOne) sqlSave(ctx context.Context) (_node *Group, err error)
 	if value, ok := _u.mutation.AddedRpmLimit(); ok {
 		_spec.AddField(group.FieldRpmLimit, field.TypeInt, value)
 	}
-	if value, ok := _u.mutation.AllowLive(); ok {
-		_spec.SetField(group.FieldAllowLive, field.TypeBool, value)
-	}
 	if value, ok := _u.mutation.MaxReasoningEffort(); ok {
 		_spec.SetField(group.FieldMaxReasoningEffort, field.TypeString, value)
+	}
+	if value, ok := _u.mutation.MaxReasoningEffortOverLimit(); ok {
+		_spec.SetField(group.FieldMaxReasoningEffortOverLimit, field.TypeString, value)
 	}
 	if value, ok := _u.mutation.ReasoningEffortMappings(); ok {
 		_spec.SetField(group.FieldReasoningEffortMappings, field.TypeJSON, value)
@@ -4029,12 +4125,6 @@ func (_u *GroupUpdateOne) sqlSave(ctx context.Context) (_node *Group, err error)
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, group.FieldReasoningEffortMappings, value)
 		})
-	}
-	if value, ok := _u.mutation.DuplicateOperationID(); ok {
-		_spec.SetField(group.FieldDuplicateOperationID, field.TypeString, value)
-	}
-	if _u.mutation.DuplicateOperationIDCleared() {
-		_spec.ClearField(group.FieldDuplicateOperationID, field.TypeString)
 	}
 	if value, ok := _u.mutation.ProfitControlEnabled(); ok {
 		_spec.SetField(group.FieldProfitControlEnabled, field.TypeBool, value)

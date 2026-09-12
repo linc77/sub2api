@@ -328,7 +328,7 @@ const sizeOptions = computed(() => IMAGE_SIZE_OPTIONS.map((item) => ({
 })))
 const currentModels = computed<string[]>(() => {
   if (!isAdmin.value) return models.value
-  const groupModels = selectedAdminGroup.value?.models_list_config?.models?.filter(Boolean) || []
+  const groupModels = selectedAdminGroup.value?.model_allowlist?.models?.filter(Boolean) || []
   const supportedModels = groupModels.filter(supportsImageWorkspaceModel)
   return supportedModels.length > 0 ? supportedModels : [...DEFAULT_IMAGE_MODELS]
 })

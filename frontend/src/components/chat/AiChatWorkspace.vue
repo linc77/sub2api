@@ -351,7 +351,7 @@ const currentModels = computed(() => {
   const group = selectedGroup.value
   if (!group) return []
   if (isAdmin.value) {
-    const configured = (group as AdminGroup).models_list_config?.models?.filter((item) => item && !item.toLowerCase().includes('image')) || []
+    const configured = (group as AdminGroup).model_allowlist?.models?.filter((item) => item && !item.toLowerCase().includes('image')) || []
     return configured.length > 0 ? configured : fallbackChatModels(group.platform)
   }
   return extractChatModelsForGroup(channels.value, group.id, group.platform)

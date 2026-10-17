@@ -1,46 +1,29 @@
 #!/bin/sh
 set -eu
 
-PROJECT_DIR="/Users/caixin/77code-server/sub2api"
-DOCKER="/usr/local/bin/docker"
-CURL="/usr/bin/curl"
-LAUNCHCTL="/bin/launchctl"
-CLOUDFLARED="/opt/homebrew/bin/cloudflared"
-LOG="/tmp/77code-healthcheck.log"
-CLOUDFLARED_AGENT="/Users/caixin/Library/LaunchAgents/com.cloudflare.cloudflared.plist"
-CLOUDFLARED_LABEL="gui/$(id -u)/com.cloudflare.cloudflared"
+OPS_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+. "$OPS_DIR/common-77code.sh"
 
-log() {
-  printf '%s %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$*" >> "$LOG"
-}
-
-cd "$PROJECT_DIR"
-
-if ! "$DOCKER" info >/dev/null 2>&1; then
-  log "Docker is unavailable; invoking start script"
-  /Users/caixin/77code-server/sub2api/ops/start-77code.sh || true
-  exit 0
+# Monitoring is read-only: report failures without restarting live services.
+failed=0
+if "$DOCKER" info >/dev/null 2>&1; then
+  for container in "$POSTGRES_CONTAINER" "$REDIS_CONTAINER" "$APP_CONTAINER"; do
+    if state=$(container_state "$container" 2>/dev/null); then
+      printf '%s: %s\n' "$container" "$state"
+      case "$state" in
+        healthy|running) ;;
+        *) failed=1 ;;
+      esac
+    else
+      printf '%s: missing or inaccessible\n' "$container" >&2
+      failed=1
+    fi
+  done
+else
+  printf 'Docker is unavailable\n' >&2
+  failed=1
 fi
 
-if ! "$CURL" -fsS --max-time 5 http://127.0.0.1:8081/health >/dev/null 2>&1; then
-  log "Local health failed; restarting containers"
-  "$DOCKER" compose --project-directory . -f deploy/docker-compose.local.yml -f docker-compose.override.yml up -d
-fi
-
-if ! pgrep -f "cloudflared tunnel --config /Users/caixin/.cloudflared/config.yml run 77code" >/dev/null 2>&1; then
-  log "cloudflared tunnel is not running; reloading LaunchAgent"
-  "$LAUNCHCTL" unload "$CLOUDFLARED_AGENT" >/dev/null 2>&1 || true
-  "$LAUNCHCTL" load "$CLOUDFLARED_AGENT" >/dev/null 2>&1 || true
-fi
-
-if ! "$CLOUDFLARED" tunnel info 77code 2>/tmp/77code-cloudflared-info.err | grep -q "CONNECTOR ID"; then
-  log "cloudflared has no active connector; restarting LaunchAgent"
-  "$LAUNCHCTL" kickstart -k "$CLOUDFLARED_LABEL" >/dev/null 2>&1 || {
-    "$LAUNCHCTL" unload "$CLOUDFLARED_AGENT" >/dev/null 2>&1 || true
-    "$LAUNCHCTL" load "$CLOUDFLARED_AGENT" >/dev/null 2>&1 || true
-  }
-fi
-
-if ! "$CURL" -fsSI --max-time 10 https://77code.cc >/dev/null 2>&1; then
-  log "Public health failed for https://77code.cc"
-fi
+check_endpoint 'Local health' "$LOCAL_HEALTH_URL" || failed=1
+check_endpoint 'Public health' "$PUBLIC_HEALTH_URL" || failed=1
+exit "$failed"

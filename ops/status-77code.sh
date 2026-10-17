@@ -1,20 +1,17 @@
 #!/bin/sh
 set -eu
 
-cd /Users/caixin/77code-server/sub2api
+OPS_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+. "$OPS_DIR/common-77code.sh"
 
-echo "== Docker containers =="
-/usr/local/bin/docker compose --project-directory . -f deploy/docker-compose.local.yml -f docker-compose.override.yml ps
+printf '== Docker containers ==\n'
+if "$DOCKER" info >/dev/null 2>&1; then
+  "$DOCKER" ps -a \
+    --filter "name=^/${APP_CONTAINER}$" \
+    --filter "name=^/${POSTGRES_CONTAINER}$" \
+    --filter "name=^/${REDIS_CONTAINER}$" \
+    --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}'
+fi
 
-echo
-echo "== Cloudflare tunnel =="
-/opt/homebrew/bin/cloudflared tunnel info 77code
-
-echo
-echo "== Local health =="
-/usr/bin/curl -fsS http://127.0.0.1:8081/health
-echo
-
-echo
-echo "== Public health =="
-/usr/bin/curl -fsSI --max-time 15 https://77code.cc | sed -n '1,12p'
+printf '\n== Health checks ==\n'
+exec sh "$OPS_DIR/healthcheck-77code.sh"

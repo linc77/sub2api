@@ -98,7 +98,7 @@ const baseGroup: AdminGroup = {
   model_routing: null,
   model_routing_enabled: false,
   mcp_xml_inject: false,
-  models_list_config: {
+  model_allowlist: {
     enabled: true,
     models: ['gpt-image-2', 'gpt-image-1'],
   },
@@ -257,6 +257,7 @@ describe('admin ImageGenerationView', () => {
     await flushPromises()
 
     expect(getProject).toHaveBeenCalledWith(5)
+    expect(fetchImageVersionBlob).toHaveBeenCalledWith(9, true)
   })
 
   it('filters out inactive keys and disabled groups', async () => {
@@ -284,7 +285,7 @@ describe('admin ImageGenerationView', () => {
     const secondLoad = deferred<unknown>()
     getGroups.mockResolvedValue([
       group({ id: 1, name: 'First Group' }),
-      group({ id: 2, name: 'Second Group', models_list_config: { enabled: true, models: ['gpt-image-2'] } }),
+      group({ id: 2, name: 'Second Group', model_allowlist: { enabled: true, models: ['gpt-image-2'] } }),
     ])
     getGroupApiKeys
       .mockReturnValueOnce(firstLoad.promise)
@@ -336,7 +337,6 @@ describe('admin ImageGenerationView', () => {
       { signal: expect.any(AbortSignal) },
     )
     expect(uploadImageVersion).toHaveBeenCalled()
-    expect(fetchImageVersionBlob).toHaveBeenCalledWith(9, true)
     expect(wrapper.find('img[alt="generated-image-9"]').attributes('src')).toBe('blob:admin-1')
     expect(showSuccess).toHaveBeenCalledWith('图片已保存')
   })

@@ -1,4 +1,12 @@
 export default {
+  aiChat: {
+    title: 'AI 对话',
+    description: '使用 API 密钥进行对话和图片创作。',
+    admin: {
+      title: 'AI 对话',
+      description: '选择分组测试对话和图片生成。'
+    }
+  },
   common: {
     loading: '加载中...',
     submitting: '提交中...',
@@ -166,6 +174,7 @@ export default {
     dashboard: '仪表盘',
     announcements: '公告',
     apiKeys: 'API 密钥',
+    aiChat: 'AI 对话',
     batchImage: '批量生图',
     usage: '使用记录',
     redeem: '兑换',

@@ -216,6 +216,30 @@ const routes: RouteRecordRaw[] = [
     }
   },
   {
+    path: '/chat',
+    name: 'AiChat',
+    component: () => import('@/views/user/AiChatView.vue'),
+    meta: {
+      requiresAuth: true,
+      requiresAdmin: false,
+      title: 'AI Conversation',
+      titleKey: 'aiChat.title',
+      descriptionKey: 'aiChat.description'
+    }
+  },
+  {
+    path: '/images',
+    name: 'ImageGeneration',
+    component: () => import('@/views/user/AiChatView.vue'),
+    meta: {
+      requiresAuth: true,
+      requiresAdmin: false,
+      title: 'AI Conversation',
+      titleKey: 'aiChat.title',
+      descriptionKey: 'aiChat.description'
+    }
+  },
+  {
     path: '/batch-image',
     name: 'BatchImageGuide',
     alias: '/docs/batch-image',
@@ -522,6 +546,30 @@ const routes: RouteRecordRaw[] = [
       title: 'Account Management',
       titleKey: 'admin.accounts.title',
       descriptionKey: 'admin.accounts.description'
+    }
+  },
+  {
+    path: '/admin/chat',
+    name: 'AdminAiChat',
+    component: () => import('@/views/admin/AiChatView.vue'),
+    meta: {
+      requiresAuth: true,
+      requiresAdmin: true,
+      title: 'AI Conversation',
+      titleKey: 'aiChat.admin.title',
+      descriptionKey: 'aiChat.admin.description'
+    }
+  },
+  {
+    path: '/admin/images',
+    name: 'AdminImageGeneration',
+    component: () => import('@/views/admin/AiChatView.vue'),
+    meta: {
+      requiresAuth: true,
+      requiresAdmin: true,
+      title: 'AI Conversation',
+      titleKey: 'aiChat.admin.title',
+      descriptionKey: 'aiChat.admin.description'
     }
   },
   {

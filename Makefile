@@ -5,6 +5,9 @@ FRONTEND_CRITICAL_VITEST := \
 	src/api/__tests__/client.spec.ts \
 	src/api/__tests__/tokenRefresh.spec.ts \
 	src/api/__tests__/channelMonitorV2.spec.ts \
+	src/router/__tests__/ai-chat-route.spec.ts \
+	src/router/__tests__/image-generation-route.spec.ts \
+	src/components/layout/__tests__/AppSidebar.spec.ts \
 	src/views/auth/__tests__/LinuxDoCallbackView.spec.ts \
 	src/views/auth/__tests__/WechatCallbackView.spec.ts \
 	src/views/user/__tests__/PaymentView.spec.ts \

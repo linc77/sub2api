@@ -1,4 +1,12 @@
 export default {
+  aiChat: {
+    title: 'AI Conversation',
+    description: 'Chat and create images with your API keys.',
+    admin: {
+      title: 'AI Conversation',
+      description: 'Test chat and image generation with a selected group.'
+    }
+  },
   common: {
     loading: 'Loading...',
     submitting: 'Submitting...',
@@ -166,6 +174,7 @@ export default {
     dashboard: 'Dashboard',
     announcements: 'Announcements',
     apiKeys: 'API Keys',
+    aiChat: 'AI Conversation',
     batchImage: 'Batch Images',
     usage: 'Usage',
     redeem: 'Redeem',

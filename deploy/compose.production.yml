@@ -1,0 +1,43 @@
+# 77code production application. PostgreSQL and Redis are managed separately.
+name: deploy
+
+services:
+  sub2api:
+    image: weishaw/sub2api:0.2.18@sha256:468a0b0e541e4becc05f1cf57826159235ea27a49a09f3dc2da6a43fcc05a22d
+    container_name: sub2api
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    env_file:
+      - path: ../.env.production.runtime
+        format: raw
+    ports:
+      - "127.0.0.1:8081:8080"
+    volumes:
+      - /opt/sub2api/deploy/data:/app/data
+    networks:
+      - application
+      - database
+    ulimits:
+      nofile:
+        soft: 100000
+        hard: 100000
+    logging:
+      driver: json-file
+      options:
+        max-size: "20m"
+        max-file: "3"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-T", "5", "-O", "/dev/null", "http://localhost:8080/health"]
+      interval: 10s
+      timeout: 6s
+      retries: 6
+      start_period: 60s
+
+networks:
+  application:
+    external: true
+    name: deploy_sub2api-network
+  database:
+    external: true
+    name: sub2api_sub2api-network

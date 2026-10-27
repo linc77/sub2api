@@ -1,5 +1,14 @@
 # 本地杂项文档、测试数据和外部项目副本
 /docs-local/
+
+# 77code production state and runtime credentials
+/.env.production.runtime
+/data/
+/postgres_data/
+/redis_data/
+/deploy/data/
+/migration/*.dump
+/migration/*.tar.gz
 .codex
 
 # ===================

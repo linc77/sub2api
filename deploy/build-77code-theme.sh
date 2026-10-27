@@ -4,22 +4,23 @@ set -euo pipefail
 repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 mkdir -p /opt/sub2api-builds
 build_dir=${THEME_BUILD_DIR:-$(mktemp -d /opt/sub2api-builds/77code-theme.XXXXXX)}
-mkdir -p "$build_dir/node_modules" "$build_dir/dist" "$build_dir/image"
+mkdir -p "$build_dir/node_modules" "$build_dir/pnpm-store" "$build_dir/dist" "$build_dir/image"
 source_commit=$(git -C "$repo_root" rev-parse HEAD)
 short_commit=$(git -C "$repo_root" rev-parse --short=12 HEAD)
 image="sub2api-77code:0.2.18-$short_commit"
 
 docker run --rm --name "sub2api-theme-frontend-$short_commit" \
-  --cpus=1 --memory=1024m --memory-swap=2048m --pids-limit=256 \
+  --cpus=1 --memory=2048m --memory-swap=4096m --pids-limit=256 \
   --mount "type=bind,src=$repo_root/frontend,dst=/app/frontend" \
   --mount "type=bind,src=$build_dir/node_modules,dst=/app/frontend/node_modules" \
+  --mount "type=bind,src=$build_dir/pnpm-store,dst=/app/frontend/.pnpm-store" \
   --mount "type=bind,src=$build_dir/dist,dst=/app/backend/internal/web/dist" \
   --mount "type=bind,src=$repo_root/docs/legal,dst=/app/docs/legal,readonly" \
   --mount "type=bind,src=$repo_root/deploy/build-themed-frontend.mjs,dst=/app/deploy/build-themed-frontend.mjs,readonly" \
   --workdir /app/frontend \
-  --env CI=true --env NODE_OPTIONS=--max-old-space-size=768 \
+  --env CI=true --env NODE_OPTIONS=--max-old-space-size=1536 \
   node:24-alpine sh -c \
-  'corepack enable && corepack prepare pnpm@9.15.9 --activate && pnpm install --frozen-lockfile --network-concurrency 4 --child-concurrency 1 && node /app/deploy/build-themed-frontend.mjs'
+  'corepack enable && corepack prepare pnpm@9.15.9 --activate && pnpm install --frozen-lockfile --store-dir /app/frontend/.pnpm-store --network-concurrency 4 --child-concurrency 1 && node /app/deploy/build-themed-frontend.mjs'
 
 mkdir -p "$repo_root/backend/internal/web/dist"
 cp -a "$build_dir/dist/." "$repo_root/backend/internal/web/dist/"

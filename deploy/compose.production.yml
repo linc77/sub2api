@@ -3,7 +3,7 @@ name: deploy
 
 services:
   sub2api:
-    image: sub2api-77code:0.2.18-ad4943eb508c
+    image: sub2api-77code:0.2.18-49782d906fc6
     pull_policy: never
     container_name: sub2api
     restart: unless-stopped

@@ -27,7 +27,8 @@ cp -a "$build_dir/dist/." "$repo_root/backend/internal/web/dist/"
 build_date=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 (
   cd "$repo_root/backend"
-  GOTOOLCHAIN=local GOMAXPROCS=1 GOMEMLIMIT=512MiB GOGC=50 CGO_ENABLED=0 \
+  GOPROXY="${GOPROXY:-https://goproxy.cn,direct}" GOSUMDB="${GOSUMDB:-sum.golang.google.cn}" \
+    GOTOOLCHAIN=local GOMAXPROCS=1 GOMEMLIMIT=512MiB GOGC=50 CGO_ENABLED=0 \
     nice -n 10 go build -p 1 -tags embed -trimpath \
     -ldflags="-s -w -X main.Version=0.2.18 -X main.Commit=$source_commit -X main.Date=$build_date -X main.BuildType=source" \
     -o "$build_dir/image/sub2api" ./cmd/server

@@ -3,7 +3,8 @@ name: deploy
 
 services:
   sub2api:
-    image: weishaw/sub2api:0.2.18@sha256:468a0b0e541e4becc05f1cf57826159235ea27a49a09f3dc2da6a43fcc05a22d
+    image: sub2api-77code:0.2.18-ad4943eb508c
+    pull_policy: never
     container_name: sub2api
     restart: unless-stopped
     security_opt:

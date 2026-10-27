@@ -1,0 +1,5 @@
+FROM weishaw/sub2api:0.2.18@sha256:468a0b0e541e4becc05f1cf57826159235ea27a49a09f3dc2da6a43fcc05a22d
+ARG SOURCE_COMMIT
+LABEL org.opencontainers.image.revision="${SOURCE_COMMIT}"
+LABEL org.opencontainers.image.title="77code theme on Sub2API v0.2.18"
+COPY --chown=sub2api:sub2api sub2api /app/sub2api
